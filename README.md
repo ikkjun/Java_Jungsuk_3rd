@@ -1,2 +1,2 @@
 # java_jungsuk_3rd_workspace
-자바의정석3판연습문제
+자바의 정석 3판 연습문제
