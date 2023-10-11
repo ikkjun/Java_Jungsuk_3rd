@@ -3,11 +3,12 @@
 import java.io.*;
 import java.util.Arrays;
 
-public class IOEx1 {
+public class IOEx2 {
 
 	public static void main(String[] args) {
 		byte[] inSrc = {0,1,2,3,4,5,6,7,8,9};
 		byte[] outSrc = null;
+		byte[] temp = new byte[10];
 		
 		ByteArrayInputStream input = null;
 		ByteArrayOutputStream output = null;
@@ -15,15 +16,13 @@ public class IOEx1 {
 		input = new ByteArrayInputStream(inSrc);
 		output = new ByteArrayOutputStream();
 		
-		int data = 0;
+		input.read(temp, 0, temp.length);	// 읽어 온 데이터를 배열 temp에 담는다.
+		output.write(temp,5,5);				// temp[5]부터 5개의 데이터를 write한다.
 		
-		while((data = input.read())!= -1) {
-			output.write(data);
-		}
-		
-		outSrc = output.toByteArray();	// 스트림의 내용을 byte배열로 변환한다.
+		outSrc = output.toByteArray();
 		
 		System.out.println("Input Source :" + Arrays.toString(inSrc));
+		System.out.println("temp		:" + Arrays.toString(temp));
 		System.out.println("Output Source :" + Arrays.toString(outSrc));
 	}
 
