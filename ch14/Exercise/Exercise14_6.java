@@ -1,16 +1,13 @@
+import java.util.Random;
 
 public class Exercise14_6 {
 
 	public static void main(String[] args) {
-		int max = 0;
-		String[] strArr = {"aaaa","bb","c","ddddd"};
-		for(int i=0;i<strArr.length;i++) {
-			int len = strArr[i].length();
-			if(len > max) {
-				max = len;
-			}
-		}
-		System.out.println(max);
+		new Random().ints(1, 46)	// 1~45 사이의 정수(46은 포함 안 됨)
+					.distinct()		// 중복 제거
+					.limit(6)		// 6개만
+					.sorted()		// 정렬
+					.forEach(System.out::println);	// 화면에 출력
 	}
 
 }
