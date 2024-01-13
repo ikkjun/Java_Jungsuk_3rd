@@ -52,7 +52,7 @@
 패키지란 클래스의 묶음이다. 
 클래스의 실제 이름은 패키지명이 포함.(java.lang.String)
 
-패키지의 선언
+### 패키지의 선언
 package 패키지명;
 모든 클래스는 하나의 패키지에 속하며 패키지가 선언되지 않은 클래스는 자동으로 이름없는(default) 패키지에 속한다.
 클래스패스(classpath) 설정
@@ -60,24 +60,24 @@ package 패키지명;
 환경변수(classpath)로 관리하며, 경로간의 구분자는 ';'를 사용한다.
 환경변수(classpath)에 패키지의 루트를 등록해줘야 한다.
 
-import 문
+### import 문
 import문으로 사용하고자 하는 클래스의 패키지를 미리 명시하면 클래스를 사용할 때 패키지명은 생략할 수 있다.
 단축키 'ctrl+shift+o'를 누르면` 자동으로 import문을 추가
 
-import문의 선언
+### import문의 선언
 일반적인 소스파일(*.java)의 구성은 다음의 순서로 되어 있다.
 package문
 import문: import 패키지명.클래스명; 또는 패키지.*;
 클래스 선언
 
-static import문
+### static import문
 static import문을 사용하면 static멤버를 호출할 때 클래스 이름을 생략할 수 있다.
 import static java.lang.System.out;
 import static java.lang.Math.*;
 System.out.println(Math.random());
 → out.println(random());
 
-4. 제어자(modifier)
+## 4. 제어자(modifier)
 제어자란?
 클래스, 변수, 메서드의 선언부에 사용되어 부가적인 의미 부여(형용사)
 접근 제어자: public, protected, default, private(제일 왼쪽)
