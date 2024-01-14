@@ -58,18 +58,20 @@ package 패키지명; </br>
 
 ### 클래스패스(classpath) 설정
 - 클래스 파일(*.class)의 위치를 알려주는 경로(path). 
-환경변수(classpath)로 관리하며, 경로간의 구분자는 ';'를 사용한다.
-환경변수(classpath)에 패키지의 루트를 등록해줘야 한다.
+- 환경변수(classpath)로 관리하며, 경로간의 구분자는 ';'를 사용한다.
+- 환경변수(classpath)에 패키지의 루트를 등록해줘야 한다.
 
 ### import 문
-import문으로 사용하고자 하는 클래스의 패키지를 미리 명시하면 클래스를 사용할 때 패키지명은 생략할 수 있다.
-단축키 'ctrl+shift+o'를 누르면` 자동으로 import문을 추가
+- import문으로 사용하고자 하는 클래스의 패키지를 미리 명시하면 클래스를 사용할 때 패키지명은 생략할 수 있다.
+- 단축키 'ctrl+shift+o'를 누르면` 자동으로 import문을 추가
 
 ### import문의 선언
 일반적인 소스파일(*.java)의 구성은 다음의 순서로 되어 있다.
+```java
 package문
 import문: import 패키지명.클래스명; 또는 패키지.*;
 클래스 선언
+```
 
 ### static import문
 static import문을 사용하면 static멤버를 호출할 때 클래스 이름을 생략할 수 있다.
