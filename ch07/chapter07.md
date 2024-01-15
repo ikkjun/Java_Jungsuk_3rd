@@ -254,7 +254,7 @@ class 클래스명 extends 조상클래스 implements 인터페이스{	}
 ### 인터페이스의 이해⭑
 두 대상(객체)간의 '연결, 대화, 소통'을 돕는 '중간 역할'을 한다. </br>   
 선언(설계)와 구현(알맹이)을 분리시킬 수 있게 한다.
-![interface](./interface.png)
+![interface](./interface.jpg)
 
 ### 인터페이스 이해할 때 주의사항
 클래스를 사용하는 쪽(User), 클래스를 제공하는 쪽(Provider) 있음 </br>
