@@ -53,7 +53,9 @@
 - 클래스의 실제 이름은 패키지명이 포함.(java.lang.String)
 
 ### 패키지의 선언
-package 패키지명; </br>
+```java
+package 패키지명;
+```
 모든 클래스는 하나의 패키지에 속하며 패키지가 선언되지 않은 클래스는 자동으로 이름없는(default) 패키지에 속한다.
 
 ### 클래스패스(classpath) 설정
@@ -75,36 +77,39 @@ import문: import 패키지명.클래스명; 또는 패키지.*;
 
 ### static import문
 static import문을 사용하면 static멤버를 호출할 때 클래스 이름을 생략할 수 있다.
+```java
 import static java.lang.System.out;
 import static java.lang.Math.*;
-System.out.println(Math.random());
-→ out.println(random());
+
+out.println(random()); // System.out.println(Math.random());
+```
 
 ## 4. 제어자(modifier)
-제어자란?
+### 제어자란?
 클래스, 변수, 메서드의 선언부에 사용되어 부가적인 의미 부여(형용사)
-접근 제어자: public, protected, default, private(제일 왼쪽)
-그 외: static, final, abstract, naive … 
+- 접근 제어자: public, protected, default, private(제일 왼쪽)
+- 그 외: static, final, abstract, naive … </br>
+
 하나의 대상에 대해서 여러 제어자를 사용하는 것이 가능하지만, 접근 제어자는 하나만 선택해서 사용할 수 있다.
 
-static
-static은 ‘클래스의' 또는 ‘공통적인’의 의미를 가지고 있다.
-static이 사용될 수 있는 곳 - 멤버변수, 메서드, 초기화 블럭
-static메서드 내에서 인스턴스 멤버들을 직접 사용할 수 없다.
+### static
+- static은 ‘클래스의' 또는 ‘공통적인’의 의미를 가지고 있다.
+- static이 사용될 수 있는 곳 - 멤버변수, 메서드, 초기화 블럭
+- static메서드 내에서 인스턴스 멤버들을 직접 사용할 수 없다.
 
-final
-‘마지막의’ 또는 ‘변경될 수 없는’의 의미, 모든 대상에 사용 가능
-final 사용될 수 있는 곳: 클래스, 멤버변수, 메서드, 지역변수
-클래스: 변경될 수 없는 클래스, 조상이 될 수 없는 클래스, String, Math
-메서드: 오버라이딩 할 수 없는 메서드
-변수(멤버 변수, 지역변수): 값을 변경할 수 없는 상수(항상 static final 아님)
+### final
+- ‘마지막의’ 또는 ‘변경될 수 없는’의 의미, 모든 대상에 사용 가능
+- final 사용될 수 있는 곳: 클래스, 멤버변수, 메서드, 지역변수
+  - 클래스: 변경될 수 없는 클래스, 조상이 될 수 없는 클래스, String, Math
+  - 메서드: 오버라이딩 할 수 없는 메서드
+  - 변수(멤버 변수, 지역변수): 값을 변경할 수 없는 상수(항상 static final 아님)
 
-abstract
-abstract는 ‘추상의’,  ‘미완성’의 의미를 가지고 있다.
-abstract가 사용될 수 있는 곳 - 클래스, 메서드
-클래스: 클래스 안에 추상 메서드가 선언되어 있음.
-메서드: 선언부만 작성하고, 구현부는 작성하지 않음.
-abstract클래스는 객체를 생성할 수 없고, 추상메서드를 갖고 있으니 상속받아서 완성해줘야 한다.
+### abstract
+- abstract는 ‘추상의’, ‘미완성’의 의미를 가지고 있다.
+- abstract가 사용될 수 있는 곳 - 클래스, 메서드
+  - 클래스: 클래스 안에 추상 메서드가 선언되어 있음.
+  - 메서드: 선언부만 작성하고, 구현부는 작성하지 않음.
+- abstract클래스는 객체를 생성할 수 없고, 추상메서드를 갖고 있으니 상속받아서 완성해줘야 한다.
 
 접근 제어자(access modifier)
 사용될 수 있는 곳: 클래스, 멤버변수, 메서드, 생성자
