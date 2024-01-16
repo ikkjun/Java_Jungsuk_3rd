@@ -98,18 +98,25 @@ throw e;
       1. Exception과 그 자손: checked 예외(try-catch 필수)
       2. RuntimeException과 그 자손: unchecked 예외(try-catch 선택)
 3. 논리적 에러
-1.7 메서드에 예외 선언하기
+
+### 1.7 메서드에 예외 선언하기
+```java
 void method() throws Exception, Exception2, … ExceptionN
 {	// 메서드의 내용 	}
+```
+
 아래의 오류 코드를 해석하시오.
+```java
 java.lang.Exception
 	at ExceptionEx12.method2(ExceptionEx12.java:11)
 	at ExceptionEx12.method1(ExceptionEx12.java:7)
 	at ExceptionEx12.main(ExceptionEx12.java:3)
+```
 예외가 발생했을 때, 모두 3개의 메서드(main, method1, method2)가 호출 스택에 있었으며
 예외가 발생한 곳은 제일 윗줄에 있는 method2( )이다.
 maint메서드가 method1( )을, 그리고 method1( )은 method2( )를 호출했다.
-1.8 finally 블럭
+
+### 1.8 finally 블럭
 finally블럭은 예외의 발생여부에 상관없이 실행되어야할 코드를 포함시킬 목적으로 시용된다.
 try - catch - finally의 순서로 구성된다.
 try {
