@@ -95,8 +95,8 @@ throw e;
 2. 런타임 에러
    1. error: 심각
    2. exception: 덜 심각
-      1. Exception과 그 자손: checked 예외
-      2. RuntimeException과 그 자손: unchecked 예외
+      1. Exception과 그 자손: checked 예외(try-catch 필수)
+      2. RuntimeException과 그 자손: unchecked 예외(try-catch 선택)
 3. 논리적 에러
 1.7 메서드에 예외 선언하기
 void method() throws Exception, Exception2, … ExceptionN
