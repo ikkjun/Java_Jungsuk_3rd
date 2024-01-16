@@ -138,7 +138,7 @@ public > protected > (default) > private
 4. 메서드에 private과 final을 같이 사용할 필요는 없다.
 
 ### Math클래스가 인스턴스를 생성할 필요가 없는 이유는?
-Math클래스는 몇 개의 상수와 static메서드만으로 구성되어 있기 때문이다.
+Math클래스는 몇 개의 상수와 static메서드만으로 구성되어 있기 때문에 객체를 생성할 필요가 없다.
 
 ## 5. 다형성(polymorphism)
 ### 다형성이란?
