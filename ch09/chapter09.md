@@ -5,20 +5,20 @@
  - notify(), wait() 등은 쓰레드와 관련된 메서드이다.
  - equals(), hashCodeO, toString()은 적절히 오버라이딩해야 한다. 
 
-Object클래스가 iv변수가 없음에도 불구하고 static메서드가 아니라 인스턴스 메서드인 이유는?
-this를 사용한다.
-this를 사용하지 않더라도 오버라이딩해서 자식이 iv를 사용하는 것이 예상되기 때문이다.
+Object클래스가 iv변수가 없음에도 불구하고 static메서드가 아니라 인스턴스 메서드인 이유는?</br>
+1. this를 사용한다. 
+2. this를 사용하지 않더라도 오버라이딩해서 자식이 iv를 사용하는 것이 예상되기 때문이다.
 
 #### equals(Object obj)
 객체 자신과 주어진 객체(obj)를 비교한다. 같으면 true, 다르면 false</br>	
 Object클래스에 정의된 equals()는 참조변수 값(객체의 주소)을 비교한다. 
 
 #### hashCode( )
-객체의 해시코드(int타입의 정수)를 반환하는 메서드(해시함수)
-다량의 데이터를 저장&검색하는 해싱기법에 사용된다.
-Object클래스의 hashCode()는 객체의 내부주소를 반환한다. 
-
-equals()를 오버라이딩하면, hashCocle()도 같이 오버라이딩 해야 한다. equals()의 결과가 true인 두 객체의 hash cocle는 같아야하기 때문 
+- 객체의 해시코드(int타입의 정수)를 반환하는 메서드(해시함수)</br>
+- 다량의 데이터를 저장&검색하는 해싱기법에 사용된다.</br>
+- Object클래스의 hashCode()는 객체의 내부주소를 int로 변환해서 반환한다. 
+- equals()를 오버라이딩하면, hashCocle()도 같이 오버라이딩 해야 한다. </br>
+equals()의 결과가 true인 두 객체의 hash cocle는 같아야하기 때문 
 
 #### toString( )
 객체의 정보를 문자열(String)로 제공할 목적으로 정의된 메서드 
