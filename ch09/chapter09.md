@@ -78,6 +78,7 @@ StringBuilder: 동기화하지 않음
 String클래스는 내용을 변경할 수 없는 불변(immutable) 클래스이다.</br>
 String은 변경할 수 없고 변경하려고 할 때마다 객체가 생성되는 클래스이다. </br>
 덧셈 연산자 '+'를 사용해서 문자열을 결합하는 것은 연산을 할 때마다 새로운 문자열을 가진 String 인스턴스가 생성되어 성능이 떨어진다. 그러므로 저장된 문자열의 변경이 가능한 StringBuffer 인스턴스를 사용하면 된다.
+
 #### 문자열의 비교
 String str1 = "abc";</br>
 String str2 = "abc";</br>
@@ -94,8 +95,6 @@ equals( )를 사용했을 때는 두 문자열의 내용(“abc”)을 비교하
 빈 문자열은 내용이 없는 문자열, 크기가 0인 char형 배열을 저장하는 문자열이다.
 크기가 0인 배열을 생성하는 것은 어느 타입이나 가능하다.
 
-#### join() 과 StringJoiner
-
 ##### 문자(char)와 문자열(String)의 초기화
 일반적으로 변수를 선언할 때, 각 타입의 기본값으로 초기화 하지만 String은 참조형 타입의 기본값인 null 보다는 빈문자열로(NullPointException 발생할 수 있기 때문), char형은 기본값인 ‘\u0000’ 대신 공백으로 초기화해야 한다.
 ```java
@@ -108,27 +107,41 @@ char c = ' ';   // 공백으로 초기화
 1. equals()는 true, false를 반환하지만 compareTo()는 같으면 0, 크면 -1, 작으면 1을 반환한다.
 2. compareTo()는 어떤 기준으로 비교할 때
 
+#### join() 과 StringJoiner
+- join()은 여러 문자열 사이에 구분자를 넣어서 결합한다.
+
 #### 문자열과 기본형 간의 변환
-기본형 값을 String으로 변환
+##### 기본형 값을 String으로 변환
+```java
 int i=100;
 String str1 = i + “”;
 String str2 = String.valueOf(i);	// 이 방법이 더 빠르다.
+```
 
-String을 기본형 값으로 변환
+##### String을 기본형 값으로 변환
+```java
 int i=Integer.parseInt(“100”);		// old
-int i2 = Integer.valueOf(“100”);	// new
+int i2 = Integer.valueOf(“100”);	// new, 편리
+```
 
 ### 1.3 StringBuffer클래스와 StringBuilder 클래스
 StringBuffer클래스: 동기화 o
 StringBuilder클래스: 동기화 x
 
 String클래스는 인스턴스를 생성할 때 지정된 문자열을 변경할 수 없지만 StringBuffer클래스는 변경이 가능하다. StringBuffer클래스는 String 클래스와 같이 문자열을 저장하기 위한 char형 배열의 참조변수를 인스턴스변수로 선언해 놓고 있다.
+String처럼 문자형 배열(char[])을 내부적으로 가지고 있다. 그러나 String 클래스와 달리 변경이 가능하다.
 
-StringBuffer의 생성자
+#### StringBuffer의 생성자
 StringBuffer인스턴스를 생성할 때는 생성자 StringBuffer(int length)를 사용해서 StringBuffer인스턴스에 저장될 문자열의 길이를 고려하여 충분히 여유있는 크기로 지정하는 것이 좋다. 버퍼의 크기를 지정해주지 않으면 16개의 문지를 저장할 수 있는 크기의 버퍼를 생성한다.
 
-StringBuffer의 변경
-String과 달리 StringBuffer는 내용을 변경할 수 있다.
+##### 배열의 길이를 변경하는 과정
+1. 새로운 배열 생성
+2. 내용 복사
+3. 참조 변경
+
+#### StringBuffer의 변경
+- String과 달리 StringBuffer는 내용을 변경할 수 있다.
+- append()는 지정된 내용을 StringBuffer에 추가 후, StringBuffer의 참조를 반환한다.
 StringBuffer sb = new StringBuffer(“abc”);
 sb.append(“123”).append(“ZZ”);
 
