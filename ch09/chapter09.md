@@ -78,24 +78,26 @@ StringBuilder: 동기화 하지 않음
 #### 변경 불가능한(immutable) 클래스
 String은 변경할 수 없고 변경하려고 할 때마다 객체가 생성되는 클래스이다. 
 
-문자열의 비교
-String str1 = "abc";
- String str2 = "abc";
- String str3 =newString("abc");
- String str4 =newstring("abc"); 
-
-
-
+#### 문자열의 비교
+String str1 = "abc";</br>
+String str2 = "abc";</br>
+String str3 =new String("abc");</br>
+String str4 =new String("abc");</br>
 equals( )를 사용했을 때는 두 문자열의 내용(“abc”)을 비교하기 때문에 두 경우 모두 true를 결과로 얻는다. 하지만, 각 String인스턴스의 주소를 등가비교연산자 ‘==’로 비교했을 때는 결과가 다르다.
 
-문자열 리터럴
+#### 문자열 리터럴
 모든 문자열 리터럴은 컴파일 시에 클래스 파일에 저장된다. 클래스 파일에는 소스파일에 포함된 모든 리터럴의 목록이 있다. 해당 클래스 파일이 클래스 로더에 의해 메모리에 올라갈 때, 이 리터럴의 목록에 있는 리터럴들이 JVM내에 있는 ‘상수 저장소(constant pool)’에 저장된다.
 
-빈 문자열(empty string)
+#### 빈 문자열(empty string)
 내용이 없는 문자열, 크기가 0인 char형 배열을 저장하는 문자열 
-일반적으로 변수를 선언할 때, 각 타입의 기본값으로 초기화 하지만 Strin g은 참조형 타 입의 기본값인 null 보다는 빈문자열로(NullPointException 발생할 수 있기 때문), char형은 기본값인 ‘\u0000’ 대신 공백으로 초기화 하는 것이 보통이다.
+일반적으로 변수를 선언할 때, 각 타입의 기본값으로 초기화 하지만 String은 참조형 타입의 기본값인 null 보다는 빈문자열로(NullPointException 발생할 수 있기 때문), char형은 기본값인 ‘\u0000’ 대신 공백으로 초기화해야 한다.
 
-문자열과 기본형 간의 변환
+#### String 클래스의 생성자와 메서드
+##### equals()와 compareTo()의 차이점은?
+1. equals()는 true, false를 반환하지만 compareTo()는 같으면 0, 크면 -1, 작으면 1을 반환한다.
+2. compareTo()는 어떤 기준으로 비교할 때
+
+#### 문자열과 기본형 간의 변환
 기본형 값을 String으로 변환
 int i=100;
 String str1 = i + “”;
@@ -105,7 +107,7 @@ String을 기본형 값으로 변환
 int i=Integer.parseInt(“100”);		// old
 int i2 = Integer.valueOf(“100”);	// new
 
-1.3 StringBuffer클래스와 StringBuilder 클래스
+### 1.3 StringBuffer클래스와 StringBuilder 클래스
 StringBuffer클래스: 동기화 o
 StringBuilder클래스: 동기화 x
 
@@ -119,7 +121,7 @@ String과 달리 StringBuffer는 내용을 변경할 수 있다.
 StringBuffer sb = new StringBuffer(“abc”);
 sb.append(“123”).append(“ZZ”);
 
-StringBuffer의 비교
+#### StringBuffer의 비교 ★
 String클래스에서는 equals 메서드를 오버라이딩해서 문자열의 내용을 비교 하도록 구현되어 있지만. StringBuffer클래스는 equals메서드를 오버라이딩하지 않아서 StringBuffer클래스의 equals메서드를 사용해도 등가비교연산자(==)로 비교한 것과 같은 결과를 얻는다.
 그래서 StringBuffer 인스턴스에 담긴 문자열을 비교하기 위해서는 StringBuffer 인스턴스에 toString( )을 호출해서 String인스턴스를 얻은 다음, 여기에 equals메서드를 사용해서 비교해야 한다.
 
@@ -128,8 +130,12 @@ StringBuffer 클래스의 생성자와 메서드
 
 
 
-1.4 Math 클래스
-1.5 래퍼(wrapper) 클래스
+### 1.4 Math 클래스
+### 1.5 래퍼(wrapper) 클래스
+#### 자바가 완전한 객체 지향 언어가 아니라는 비판을 받는 이유는?
+객체 지향 개념에서 모든 개념은 객체로 다루어져야 한다. 그러나 자바에서는 8개의 기본형은 객체로 다루지 않기 때문이다.
+
+기본형(primitive type) 변수도 어쩔 수 없이 객체로 다뤄야 하는 경우에 사용되는 것이 래퍼(wrapper) 클래스이다.
 
 2. 유용한 클래스
 2.1 java.util.Objects 클래스
