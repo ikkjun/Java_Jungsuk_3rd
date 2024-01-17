@@ -57,20 +57,25 @@ clone( )은 단순히 객체에 저장된 값을 그대로 복제할 뿐 객체�
 Class객체는 클래스의 모든 정보를 담고 있으며, 클래스 당 단 1개만 존재한다. 
 클래스파일(*.class)이 메모리에 로드될 때 생성된다.
 
-Class객체를 얻는 방법
+#### Class객체를 얻는 방법
 Class cObj = new Card().getClass(); // 생성된 객체로 부터 얻는 방법 
 Class cObj = Card.class; / / 클래스 리터럴 (*.class)로 부터 얻는 방법
 Class cObj = Class . forName ("Card" ); // 클래스 이름으로 부터 얻는 방법
 
-Class 객체 이용할 때의 장점
+#### Class 객체 이용할 때의 장점
 클래스에 대한 모든 정보를 얻을 수 있다. 
 Class 객체를 통해서 객체를 생성하고 메서드를 호출할 수 있다.
 
-1.2 String 클래스				
+### 1.2 String 클래스				
 문자형 배열(char[])과 그에 관련된 메서드들이 정의되어 있다. 
-String인스턴스의 내용은 바꿀 수 없다.(immutable)
+String인스턴스의 내용은 바꿀 수 없다.(immutable)</br>
 
-변경 불가능한(immutable) 클래스
+String클래스: 불변(보안)</br>
+StringBuffer: 가변(동기화)</br>
+StringBuilder: 동기화 하지 않음
+
+
+#### 변경 불가능한(immutable) 클래스
 String은 변경할 수 없고 변경하려고 할 때마다 객체가 생성되는 클래스이다. 
 
 문자열의 비교
