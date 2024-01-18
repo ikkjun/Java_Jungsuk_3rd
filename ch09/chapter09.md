@@ -146,16 +146,33 @@ StringBuffer sb = new StringBuffer(“abc”);
 sb.append(“123”).append(“ZZ”);
 
 #### StringBuffer의 비교 ★
-String클래스에서는 equals 메서드를 오버라이딩해서 문자열의 내용을 비교 하도록 구현되어 있지만. StringBuffer클래스는 equals메서드를 오버라이딩하지 않아서 StringBuffer클래스의 equals메서드를 사용해도 등가비교연산자(==)로 비교한 것과 같은 결과를 얻는다.
+String클래스에서는 equals 메서드를 오버라이딩해서 문자열의 내용을 비교 하도록 구현되어 있지만, StringBuffer클래스는 equals메서드를 오버라이딩하지 않아서 StringBuffer클래스의 equals메서드를 사용해도 등가비교연산자(==)로 주소를 비교한 것과 같은 결과를 얻는다.
 그래서 StringBuffer 인스턴스에 담긴 문자열을 비교하기 위해서는 StringBuffer 인스턴스에 toString( )을 호출해서 String인스턴스를 얻은 다음, 여기에 equals메서드를 사용해서 비교해야 한다.
 
-StringBuffer 클래스의 생성자와 메서드
-변경관련 메서드가 많다. append가 insert보다 빠르다.
+#### StringBuffer 클래스의 생성자와 메서드
+변경 관련 메서드가 많다. append가 insert보다 빠르다.
+
+#### StringBuilder
+- StringBuffer는 동기화되어 있다. 멀티 쓰레드에 안전(thread-safe)하다. 하지만 멀티 쓰레드 프로그림이 아닌 경우, 동기화는 불필요하게 성능만 떨어뜨리게 된다. 이럴 땐 StringBuffer 대신 StringBuilder를 사용하면 성능이 향상된다.
+- StringBuilder는 쓰레
 
 ### 1.4 Math 클래스
+- 수학 관련 static 메서드의 집합
+- Math 클래스의 생성자는 접근 제어자가 private이기 때문에 다른 클래스에서 Math인스턴스를 생성할 수 없도록 되어 있다.
+
+#### round로 원하는 소수점 아래 세 번째 자리에서 반올림하기
+1. 원래 값에 100을 곱한다.
+2. 위의 결과에 Math.round()를 사용한다.
+3. 위의 결과를 다시 100.0으로 나눈다.
+
+#### StrictMath 클래스
+Math클래스는 최대한의 성능을 얻기 위해 JVM이 설치된 OS의 메서드를 호출해서 사용한다. 즉, OS에 의존적인 계산을 하고 있는 것이다. 
+이로 인해 OS마다 서로 다른 반올림의 처리방법으로 인한 값의 차이를 없애기 위해 성능은 포기하는 대신, 어떤 OS에서 실행되어도 항상 같은 결과를 얻도록 Math클래스를 새로 작성한 것이 StrictMath클래스이다.
+
 ### 1.5 래퍼(wrapper) 클래스
+8개의 기본형을 객체로 다뤄야 할 때 사용하는 클래스
 ##### 자바가 완전한 객체 지향 언어가 아니라는 비판을 받는 이유는?
-객체 지향 개념에서 모든 개념은 객체로 다루어져야 한다. 그러나 자바에서는 8개의 기본형은 객체로 다루지 않기 때문이다.
+객체 지향 개념에서 모든 개념은 객체로 다루어져야 한다. 그러나 자바에서는 8개의 기본형은 객체로 다루지 않기 때문이다(성능을 높이기 위한 조치).
 
 기본형(primitive type) 변수도 어쩔 수 없이 객체로 다뤄야 하는 경우에 사용되는 것이 래퍼(wrapper) 클래스이다.
 
@@ -166,15 +183,29 @@ StringBuffer 클래스의 생성자와 메서드
 기본형과 참조형 간의 자동 변환이 가능해졌다.
 기본형 값을 래퍼 클래스의 객체로 자동 변환해주는 것을 오토박싱(autoboxing)이라고 하고, 반대로 변환하는 것을 언박싱(unboxing)이라고 한다.
 
-2. 유용한 클래스
-2.1 java.util.Objects 클래스
-2.2 java.util.Random 클래스
-2.3 정규식(Regular Expression) - java.util.regex패키지
-2.4 java.util.Scanner 클래스
-2.5 java.util.StringTockenizer 클래스
-StringTokenizer는 긴문자열을 지정된 구분자(delimiter)를 기준으로 토큰(token)이라 는 여러 개의 문자열로 잘라내는 데 사용된다.  
+#### 문자열을 숫자로 변환하기
+```java
+int i = new Integer("100").intValue();
+int i2 = Integer.parseInt("100");
+Integer i3 = Integer.valueOf("100");
+```
+## 2. 유용한 클래스
+### 2.1 java.util.Objects 클래스
+### 2.2 java.util.Random 클래스
+Math.random()과 Random의 가장 큰 차이점은 종자값(seed)을 원하는 대로 설정할 수 있다는 것이다. 종자값이 같은 Random인스턴스들은 항상 같은 난수를 같은 순서대로 반환한다.
+
+### 2.3 정규식(Regular Expression) - java.util.regex패키지
+정규식이란 텍스트 데이터 중에서 원하는 조건(패턴, pattern)과 일치하는 문자열을 찾아내기 위해 사용하는 것이다.
+
+### 2.4 java.util.Scanner 클래스
+Scanner는 화면, 파일, 문자열과 같은 입력소스로부터 문자데이터를 읽어 온다.
+
+### 2.5 java.util.StringTockenizer 클래스
+StringTokenizer는 긴문자열을 지정된 구분자(delimiter)를 기준으로 토큰(token)이라는 여러 개의 문자열로 잘라내는 데 사용된다.  
 
 그러나 StringTokenizer는 구분자로 단 하나의 문자 밖에 사용하지 못하기 때문에 보다 복잡한 형태의 구분자로 문자열을 나누어야 할 때는 어쩔 수 없이 정규식을 사용하는 String의 split(String regex)나 Scanner의 useDelimiter(String pattern) 메서드를 사용해야 한다. 
 
-2.6 java.math.BigInteger 클래스
-2.7 java.math.BigDecimal 클래스
+### 2.6 java.math.BigInteger 클래스
+BigInteger는 String처럼 불변(immutable)이다.
+
+### 2.7 java.math.BigDecimal 클래스
