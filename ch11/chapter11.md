@@ -19,10 +19,12 @@
 #### Map.Entry 인터페이스
 Map.Entry 인터페이스는 Map인터페이스의 내부 인터페이스이다. Map에 저장되는 key-value쌍을 다루기 위해 내부적으로 Entry인터페이스를 정의했다.
 
-ArrayList - List 인터페이스를 구현
-ArrayList는 기존의 Vector를 개선한 것으로 Vector와 구현원리와 기능적으로 동일하다. ArrayList와 달리 Vector는 자체적으로 동기화 처리가 되어 있다.
-ArrayList는 Object 배열을 이용해서 데이터(객체만)를 순차적으로 저장한다.
-저장된 마지막 객체부터 삭제해야 빠르다(배열복사가 발생하지 않기 때문).
+### 1.2 ArrayList - List 인터페이스를 구현
+- ArrayList는 기존의 Vector를 개선한 것으로 Vector와 구현원리와 기능적으로 동일하다. 
+- ArrayList는 List 인터페이스를 구현하기 때문에 데이터의 저장순서가 유지되고 중복을 허용한다.
+- ArrayList와 달리 Vector는 자체적으로 동기화 처리가 되어 있다. 
+- ArrayList는 Object 배열을 이용해서 데이터(객체만)를 순차적으로 저장한다. 
+- 저장된 마지막 객체부터 삭제해야 빠르다(배열복사가 발생하지 않기 때문).
 
 데이터를 삽입, 삭제하는 방법
 전체를 이동시키는 방법
