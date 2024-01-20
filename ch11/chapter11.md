@@ -1,29 +1,18 @@
-1. 컬렉션 프레임웍(Collection Framework)
-컬렉션: 여러 객체(데이터)를 모아 놓은 것을 의미
-프레임웍(framework): 표준화, 정형화된 프로그램 방식
+# 컬렉션 프레임웍(Collection Framework)
+## 1. 컬렉션 프레임웍(Collection Framework)
+컬렉션: 여러 객체(데이터)를 모아 놓은 것을 의미</br>
+프레임웍(framework): 표준화, 정형화된 프로그램 방식</br>
 
-컬렉션 프레임웍이란?
-컬렉션(다수의 객체)을 다루기 위한 표준화된 프로그래밍 방식
+컬렉션 프레임웍이란?</br>
+컬렉션(다수의 객체)을 다루기 위한 표준화된 프로그래밍 방식</br>
 컬렉션 클래스: 다수의 데이터를 저장할 수 있는 클래스 
 
-컬렉션 프레임웍의 핵심 인터페이스
-인터페이스
-특징
-List
-(순서 O, 중복 O)
-순서가 있는 데이터의 집합. 데이터의 중복을 허용한다.
-구현 클래스: Vector(old), Stack, ArrayList(new), LinkedList
-Set
-(순서 X, 중복 X)
-순서를 유지하지 않는 데이터의 집합. 데이터의 중복을 허용하지 않는다. (List와 정반대)
-구현 클래스: HashSet, Treeset
-Map
-(순서 X, 
-중복:
-키 X / 값 O)
-키(key)와 값(value)이 쌍(pair)으로 이루어진 데이터의 집합. 
-순서는 유지되지 않으며, 키는 중복을 허용하지 않고, 값은 중복을 허용한다.
-구현 클래스: Hashtable(old), HashMap(new), LinkedHashMap(순서 o), SortedMap, Treemap
+### 1.1 컬렉션 프레임웍의 핵심 인터페이스
+|인터페이스|특징|구현 클래스|
+|---|---|---|
+|List|순서가 있는 데이터의 집합. 데이터의 중복을 허용한다.(순서 O, 중복 O)|Vector(old), Stack, ArrayList(new), LinkedList|
+|Set|순서를 유지하지 않는 데이터의 집합. 데이터의 중복을 허용하지 않는다. (List와 정반대; 순서 X, 중복 X)|HashSet, Treeset|
+|Map|키(key)와 값(value)이 쌍(pair)으로 이루어진 데이터의 집합. 순서는 유지되지 않으며, 키는 중복을 허용하지 않고, 값은 중복을 허용한다.(순서 X, 중복: 키 X / 값 O)|Hashtable(old), HashMap(new), LinkedHashMap(순서 o), SortedMap, Treemap|
 
 인터페이스 List, Set을 구현한 컬렉션 클래스는 많은 공통부분이 있어서 공통된 부분을 뽑아 Collection인터페이스를 정의할 수 있었지만 Map인터페이스는 전혀 다른 형태로 컬렉션을 다루기 때문에 같은 상속계층도에 포함되지 못한다.
 
