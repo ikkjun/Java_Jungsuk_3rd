@@ -99,23 +99,27 @@ Queue q = new LinkedList( )
 Queue의 변형으로, 한 쪽 끝으로만 추가/삭제할 수 있는 Queue와 달리, Deque은 양쪽 끝에 추가/삭제가 가능하다. Deque의 조상은 Queue이며. 구현체로는ArrayDeque과 LinkedList 등이 있다.
 
 ### 1.5 Iterator, ListIterator, Enumeration		
-컬렉션에 저장된 데이터를 접근하는데 사용되는 인터페이스
-Enumeration: Iterator의 구버전
+- 컬렉션에 저장된 데이터를 접근하는데 사용되는 인터페이스
+Enumeration: Iterator의 구버전</br>
 ListIterator: Iterator의 접근성을 향상시킨 것 (단방향 → 양방향) 
 
-Iterator
+#### Iterator
 컬렉션에 iterator( )를 호출해서 Iterator(일회용)를 얻은 다음, 주로 while문을 사용해서 컬렉션 클래스의 요소들을 읽어올 수 있다.
+```java
 Collection c = new ArrayList( ); // 다른 컬렉션으로 변경시 이 부분만 고치기.
 Iterator it = list.iterator( );
 while(it.hasNext( )) { // ① boolean 읽어 올 요소가 남아 있는지 확인
 	System.out.println(it.next( ));	 // ② 다음 요소 읽어오기
 }
+```
 Iterator의 remove( )는 단독으로 쓰일 수 없고, next()와 같이 써야 한다. 특정위치의 요소를 삭제히는 것이 아니라 읽어 온 것을 삭제한다. next( )의 호출없이 remove()를 호출하면, IllegalStateException이 발생한다. 
 
-Map과 Iterator
+#### Map과 Iterator
 Map인터페이스를 구현한 컬렉션 클래스는 키(key)와 값(value)을 쌍(pair)으로 저장하고 있기 때문에 iterator( )를 직접 호출할 수 없다. 그 대신 keySet( )와 entrySet( )과 같은 메서드를 통해서 키와 값을 각각 따로 Set의 형태로 얻어 온 후에 다시 iterator()를 호출해야 Iterator를 얻을 수 있다.
+```java
 Iterator it = map.entrySet( ).iterator( );
 //	    Set인스턴스.iterator( );//map.entrySet( )실행결과가 Set이므로
+```
 
 Arrays - 배열을 다루기 편리한 static 메서드 제공(Math)
 배열의 출력 - toString()
