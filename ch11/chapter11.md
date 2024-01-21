@@ -89,16 +89,16 @@ Queue q = new Queue( ); /* 불가능 */
 Queue q = new LinkedList( )
 ```
 
-Queue의 변형
-PriorityQueue
-저장한 순서에 관계없이 우선순위(priority)가 높은 것부터 꺼내게 된다. 
-null은 저장할 수 없다. null을 저장하면 NullPointerException이 발생한다. 
-저장공간으로 배열을 사용, 각 요소를 힙(heap) 자료구조의 형태로 저장한다. 
+#### Queue의 변형
+##### PriorityQueue
+- 저장한 순서에 관계없이 우선순위(priority)가 높은 것부터 꺼내게 된다. 
+- null은 저장할 수 없다. null을 저장하면 NullPointerException이 발생한다. 
+- 저장공간으로 배열을 사용, 각 요소를 힙(heap) 자료구조의 형태로 저장한다. 
 
-Deque(Double - Ended Queue)
+##### Deque(Double - Ended Queue)
 Queue의 변형으로, 한 쪽 끝으로만 추가/삭제할 수 있는 Queue와 달리, Deque은 양쪽 끝에 추가/삭제가 가능하다. Deque의 조상은 Queue이며. 구현체로는ArrayDeque과 LinkedList 등이 있다.
 
-Iterator, ListIterator, Enumeration		
+### 1.5 Iterator, ListIterator, Enumeration		
 컬렉션에 저장된 데이터를 접근하는데 사용되는 인터페이스
 Enumeration: Iterator의 구버전
 ListIterator: Iterator의 접근성을 향상시킨 것 (단방향 → 양방향) 
