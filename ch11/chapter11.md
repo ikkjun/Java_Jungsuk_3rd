@@ -121,7 +121,7 @@ Iterator it = map.entrySet( ).iterator( );
 //	    Set인스턴스.iterator( );//map.entrySet( )실행결과가 Set이므로
 ```
 
-Arrays - 배열을 다루기 편리한 static 메서드 제공(Math)
+### 1.6 Arrays - 배열을 다루기 편리한 static 메서드 제공(Math)
 배열의 출력 - toString()
 배열의 복사 - copyOf( ), copyOfRange( )
 배열 채우기 - fill( ), setAll( )
