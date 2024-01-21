@@ -122,10 +122,10 @@ Iterator it = map.entrySet( ).iterator( );
 ```
 
 ### 1.6 Arrays - 배열을 다루기 편리한 static 메서드 제공(Math)
-배열의 출력 - toString()
-배열의 복사 - copyOf( ), copyOfRange( )
-배열 채우기 - fill( ), setAll( )
-배열의 정렬과 검색 - sort( ), binarySearch( )
+1. 배열의 출력 - toString()
+2. 배열의 복사 - copyOf( ), copyOfRange( )(새로운 배열 생성해서 반환)
+3. 배열 채우기 - fill( ), setAll( )
+4. 배열의 정렬과 검색 - sort( ), binarySearch( )
 순차 검색: 배열의 요소를 하나씩 비교
 이진(이분) 탐색: 정렬된 배열에만 가능. 정렬한 뒤 배열의 검색할 범위를 반복적으로 절반씩 줄여가며 검색
 다차원 배열의 출력 - deepToString( )
