@@ -83,8 +83,11 @@ Object배열 arr[2]에 저장된 값을 읽으려면 n은 2, 모든 참조형 �
 
 #### 스택과 큐의 차이점
 스택은 Stack 클래스로 구현하여 제공하고 있지만, 큐는 Queue인터페이스로만 정의해 놓았을 뿐 별도의 클래스를 제공하고 있지 않다. 그러므로 Queue를 직접 구현하거나, Queue를 구현한 클래스를 사용해야 한다.
-Stack s = new Stack( );  /* 가능 */ Queue q = new Queue( ); /* 불가능 */
+```java
+Stack s = new Stack( );  /* 가능 */ 
+Queue q = new Queue( ); /* 불가능 */
 Queue q = new LinkedList( )
+```
 
 Queue의 변형
 PriorityQueue
