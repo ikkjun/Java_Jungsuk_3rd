@@ -27,13 +27,22 @@ str.equalsIgnoreCase(“yes”)
 만일 블럭 내의 문장이 하나뿐 일 때는 괄호 { }를 생략 가능.
 
 ### 1.2 if - else 문
+```java
+if ( ) {
+    // 조건식이 참(true)일 때 수행될 문장들을 적는다.
+} else {
+    // 조건식이 거짓(false)일 때 수행될 문장들을 적는다.
+}
+```
 
-if - else if 문
+### 1.3 if - else if 문
+```java
 if ( ) {
 } else if ( ) { 
 } else if ( ) { 
 } else {
 }
+```
 
 중첩 if문
 if문의 블럭 내에 또 다른 if문을 포함시키는 것이 가능하고, 중첩의 횟수에는 거의 제한이 없다.
