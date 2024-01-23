@@ -1,4 +1,5 @@
-1. 조건문 - if, switch
+# Chapter 4. 조건문과 반복문(if, switch, for, while statement)
+## 1. 조건문 - if, switch
 프로그램의 흐름(flow)을 바꾸는 역할을 하는 문장들을 제어문이라고 한다. 제어문에는 ‘조건문과 반복문’이 있다.
 
 조건문은 조건식과 문장을 포함하는 블럭 { }으로 구성된다.
@@ -7,21 +8,25 @@
 
 모든 switch문은 if문으로 변경이 가능하지만, if문은 switch문으로 변경 할 수 없는 경우가 많다. 
 
-if문
-if(조건식) { 조건식이 참(true)일 때 수행될 문장들 }
+### 1.1 if문
+```java
+if(조건식) { /*조건식이 참(true)일 때 수행될 문장들*/ }
+```
 만일(if) 조건식이 참이면 괄호{ }안의 문장들을 수행하라
 
-조건식
+#### 조건식
+```java
 ‘A’<=ch && ch<=’Z’;
 ‘a’<=ch && ch<=’z’;
 ‘0’<=ch && ch<=’9’;
 str.equals(“yes”);
 str.equalsIgnoreCase(“yes”)
+```
 
-블럭(block) { }
+#### 블럭(block) { }
 만일 블럭 내의 문장이 하나뿐 일 때는 괄호 { }를 생략 가능.
 
-if - else 문
+### 1.2 if - else 문
 
 if - else if 문
 if ( ) {
