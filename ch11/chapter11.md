@@ -126,13 +126,16 @@ Iterator it = map.entrySet( ).iterator( );
 2. 배열의 복사 - copyOf( ), copyOfRange( )(새로운 배열 생성해서 반환)
 3. 배열 채우기 - fill( ), setAll( )
 4. 배열의 정렬과 검색 - sort( ), binarySearch( )
-순차 검색: 배열의 요소를 하나씩 비교
-이진(이분) 탐색: 정렬된 배열에만 가능. 정렬한 뒤 배열의 검색할 범위를 반복적으로 절반씩 줄여가며 검색
-다차원 배열의 출력 - deepToString( )
-다차원 배열의 비교 - deepEquals( )
-배열을 List로 변환 - asList(Object… a) // 가변 매개변수
+- 순차 검색(linear search): 배열의 첫 번째 요소부터 순서대로 하나씩 검색하는 것.</br>
+배열이 정렬되어 있을 필요는 없지만 배열의 요소를 하나씩 비교하기 때문에 시간이 많이 걸린다.
+- 이진 검색(binary search): 배열의 검색할 범위를 반복적으로 절반씩 줄여가면서 검색하기 때문에 검색 속도가 상당히 빠르다.</br>
+단, 배열이 정렬이 되어 있는 경우에만 사용할 수 있다는 단점이 있다.
+5. 배열의 비교와 출력 - equals(), toString()</br>
+다차원 배열의 출력 - deepToString( )</br>
+다차원 배열의 비교 - deepEquals( )</br>
+6. 배열을 List로 변환 - asList(Object… a) // 가변 매개변수 </br>
 asList( )가 반환한 List의 크기를 변경할 수 없다. 왜냐하면 asList( ) 가 반환한 것을 읽기만 할지 읽고 쓸지 모르기 때문에 빨리 전달할 수 있는 얕은 복사를 통해 List의 크기를 변경할 수 없게 한다.
-람다와 스트림 관련 - parrelXXX( ), spliterator( ), stream( )
+7. 람다와 스트림 관련 - parrelXXX( ), spliterator( ), stream( )
 
 Comparator와 Comparable
 객체 정렬에 필요한 메서드(정렬 기준 제공)를 정의한 인터페이스
