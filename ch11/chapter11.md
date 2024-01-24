@@ -107,7 +107,7 @@ ListIterator: Iterator의 접근성을 향상시킨 것 (단방향 → 양방향
 컬렉션에 iterator( )를 호출해서 Iterator(일회용)를 얻은 다음, 주로 while문을 사용해서 컬렉션 클래스의 요소들을 읽어올 수 있다.
 ```java
 Collection c = new ArrayList( ); // 다른 컬렉션으로 변경시 이 부분만 고치기.
-Iterator it = list.iterator( );
+Iterator it = c.iterator( );
 while(it.hasNext( )) { // ① boolean 읽어 올 요소가 남아 있는지 확인
 	System.out.println(it.next( ));	 // ② 다음 요소 읽어오기
 }
