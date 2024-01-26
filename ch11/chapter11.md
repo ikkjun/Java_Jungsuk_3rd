@@ -137,10 +137,10 @@ Iterator it = map.entrySet( ).iterator( );
 asList( )가 반환한 List의 크기를 변경할 수 없다. 왜냐하면 asList( ) 가 반환한 것을 읽기만 할지 읽고 쓸지 모르기 때문에 빨리 전달할 수 있는 얕은 복사를 통해 List의 크기를 변경할 수 없게 한다.
 7. 람다와 스트림 관련 - parrelXXX( ), spliterator( ), stream( )
 
-Comparator와 Comparable
+### 1.7 Comparator와 Comparable
 객체 정렬에 필요한 메서드(정렬 기준 제공)를 정의한 인터페이스
-Comparable: 기본 정렬 기준(사전순, 오름차순)을 구현하는 데 사용
-Comparator: 기본 정렬 기준 외에 다른 기준으로 정렬하고자 할 때 사용
+- Comparable: 기본 정렬 기준(사전순, 오름차순)을 구현하는 데 사용
+- Comparator: 기본 정렬 기준 외에 다른 기준으로 정렬하고자 할 때 사용
 
 정렬 과정 ① 두 대상 비교 ② 자리 바꿈 / 정렬하려면 ① 대상 ② 비교기준 필요
 
