@@ -231,8 +231,7 @@ Collection은 인터페이스이지만, Collections는 클래스이다.
 한 종류의 객체만 저장하는 컬렉션 만들기 - checkedXXX( )
 지네릭스: 한 종류 저장 컬렉션
 
-
-
+### 1.14 컬렉션 클래스 정리 & 요약
 컬렉션
 특징
 ArrayList
