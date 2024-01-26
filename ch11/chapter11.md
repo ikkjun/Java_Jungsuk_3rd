@@ -258,4 +258,4 @@ LinkedHashMap
 LinkedHashSet
 HashMap과 HashSet에 저장 순서 유지 기능을 추가
 
-<img src="interface.png">
+<img src="./collection.png">
