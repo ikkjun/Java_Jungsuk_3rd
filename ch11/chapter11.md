@@ -144,30 +144,34 @@ asList( )가 반환한 List의 크기를 변경할 수 없다. 왜냐하면 asLi
 
 정렬 과정 ① 두 대상 비교 ② 자리 바꿈 / 정렬하려면 ① 대상 ② 비교기준 필요
 
-compare( )와 compareTo( )는 두 객체의 비교결과를 반환하도록 작성. 
-같으면 0, 오른쪽이 크면 음수(-), 오른쪽이 작으면 양수(+)
-비교가 뺄셈보다 성능이 좋다 → 삼항 연산자 활용
+#### Comparable과 Comparator의 차이점
+- 공통점
+compare( )와 compareTo( )는 두 객체의 비교결과를 반환하도록 작성.</br> 
+같으면 0, 오른쪽이 크면 음수(-), 오른쪽이 작으면 양수(+)</br>
+비교가 뺄셈보다 성능이 좋다(모든 자릿수를 계산할 필요가 없기 때문) → 삼항 연산자 활용
+- Comparator의 compare메서드는 두 객체를 비교하지만 Comparable의 compareTo는 객체를 자신과 비교한다.
 
-equals( )와 compareTo( )의 차이점
-equals: x == x && y == y. 즉 둘 다 일치해야 true이다.
+#### equals( )와 compareTo( )의 차이점
+equals: x == x && y == y. 즉 둘 다 일치해야 true이다.</br>
 compareTo: x를 기준으로 할지 y를 기준으로 할지 정해야 한다. 순서를 알려줌 
 
-HashSet - 순서x, 중복 x
-Set인터페이스를 구현한 가장 대표적인 컬렉션 클래스
-순서를 유지하려면 LinkedHashSet클래스를 사용하면 된다.
+### 1.8 HashSet - 순서x, 중복x
+- Set인터페이스를 구현한 가장 대표적인 컬렉션 클래스
+- 순서를 유지하려면 LinkedHashSet클래스를 사용하면 된다.
 HashSet은 객체를 저장하기 전에 기존에 같은 객체가 있는지 확인한다.
 같은 객체가 없으면 저장하고 있으면 저장하지 않는다.
 HashSet의 add메서드(boolean add(Object o))는 새로운 객체를 추가하기 전에 기존에 저장된 요소와 같은 것인지 판별하기 위해 추가하려는 객체의 equals( )와 hashCode( )를 호출해서 (iv를 비교하도록) equals( )와 hashCode( )가 오버라이딩 되어 있어야 한다. 
 
-오버라이딩으로 작성된 hashCode( )가 만족해야 할 조건
+#### 오버라이딩으로 작성된 hashCode( )가 만족해야 할 조건
 실행중인 애플리케이션 내의 동일한 객체에 대해서 여러 번 hashCode(  )를 호출해도 동일한 int값을 반환해야 한다.
 equals메서드를 이용한 비교에 의해서 true를 얻은 두 객체에 대해 각각 hashCode( )를 호출해서 얻은 결과는 반드시 같아야 한다.
 equals메서드를 호출할 때 false를 반환하는 두 객체는 hashCode( ) 호출에 대해 같은 int값을 반환해도 괜찮지만, 해싱을 사용하는 컬렉션의 성능을 향상시키려면 다른 int값을 반환하는 것이 좋다.
 
-TreeSet
-이진 검색 트리(binary search tree)라는 자료구조의 형태로 데이터를 저장
-범위검색(range search)과 정렬에 높은 성능을 보이는 자료구조.
-Set인터페이스를 구현했으므로 중복된 데이터의 저장을 허용하지 않으며 정렬된 위치에 저장하므로 저장순서를 유지하지도 않는다.
+### 1.9 TreeSet
+- HashSet보다 데이터 추가, 삭제에 시간이 더 걸린다.
+- 이진 검색 트리(binary search tree)라는 자료구조의 형태로 데이터를 저장
+- 범위검색(range search)과 정렬에 높은 성능을 보이는 자료구조.
+- Set인터페이스를 구현했으므로 중복된 데이터의 저장을 허용하지 않으며 정렬된 위치에 저장하므로 저장순서를 유지하지도 않는다.
 
 이진 트리(binary tree)
 링크드리스트처럼 여러 개의 노드(node)가 나무(tree)형태로 연결 서로 연결된 구조로 각 노드에 최대 2개(0~2개)의 하위노드를 연결할 수 있으며 루트(root)라고 불리는 하나의 노드에서부터 시작해서 계속 확장해 나갈 수 있다.
@@ -182,7 +186,7 @@ HashSet과 TreeSet의 비교
 HashSet은 equals( )와 hashCode( )로 비교한다.
 TreeSet은 compare( )를 호출해서 비교한다.
 
-HashMap과 Hashtable: 순서x, 중복(키x, 값o)
+### 1.10 HashMap과 Hashtable: 순서x, 중복(키x, 값o)
 HashMap(동기화x)은 Hashtable(동기화o)의 신버전
 순서를 유지하려면 LinkedHashMap클래스를 사용하면 된다.
 
@@ -206,17 +210,17 @@ HashMap은 Entry라는 내부 클래스를 정의하고, 다시 Entry타입의 �
 해시함수는 같은 키에 대해 항상 같은 해시코드를 반환해야 한다. 
 서로 다른 키일지라도 같은 값의 해시코드를 반환할 수도 있다.
 
-TreeMap
+### 1.11 TreeMap
 이진검색트리의 형태로 키와 값의 쌍으로 이루어진 데이터를 저장한다.
 HashMap보다 데이터 추가, 삭제에 시간이 더 걸린다(비교해서 저장하기 때문)
 검색에 관한한 대부분의 경우에서 HashMap이 TreeMap보다 더 뛰어나다. 다만, 범위검색이나 정렬이 필요한 경우에는 TreeMap을 사용하는 것이 좋다.
 
-Properties 
+### 1.12 Properties 
 Properties는 Hashtable을 상속받아 구현한 것으로, Map의 특성상 저장순서를 유지하지 않는다. 
 Hashtable은 키와 값을 (Object, Object)의 형태로 저장하는데 비해 Properties는 (String, String)의 형태로 저장.
 주로 애플리케이션의 환경설정과 관련된 속성(property)을 저장하는데 사용되며 데이터를 파일로부터 읽고 쓰는 편리한 기능을 제공한다. 
 
-Collections
+### 1.13 Collections
 컬렉션과 관련된 메서드(static)를 제공
 Collection은 인터페이스이지만, Collections는 클래스이다.
 컬렉션 채우기, 복사, 정렬, 검색 - fill(), copy(), sort(), binarySearch() 등
