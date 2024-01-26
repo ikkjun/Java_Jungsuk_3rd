@@ -218,45 +218,32 @@ HashMap보다 데이터 추가, 삭제에 시간이 더 걸린다(비교해서 �
 검색에 관한한 대부분의 경우에서 HashMap이 TreeMap보다 더 뛰어나다. 다만, 범위검색이나 정렬이 필요한 경우에는 TreeMap을 사용하는 것이 좋다.
 
 ### 1.12 Properties 
-Properties는 Hashtable을 상속받아 구현한 것으로, Map의 특성상 저장순서를 유지하지 않는다. 
-Hashtable은 키와 값을 (Object, Object)의 형태로 저장하는데 비해 Properties는 (String, String)의 형태로 저장.
+Properties는 Hashtable을 상속받아 구현한 것으로, 키와 값을 (String, String)의 형태로 저장.
 주로 애플리케이션의 환경설정과 관련된 속성(property)을 저장하는데 사용되며 데이터를 파일로부터 읽고 쓰는 편리한 기능을 제공한다. 
 
 ### 1.13 Collections
-컬렉션과 관련된 메서드(static)를 제공
-Collection은 인터페이스이지만, Collections는 클래스이다.
-컬렉션 채우기, 복사, 정렬, 검색 - fill(), copy(), sort(), binarySearch() 등
-컬렉션의 동기화 - synchronizedXXX();
-변경불가(readOnly) 컬렉션 만들기 - unmodifiableXXX( )
-싱글톤 컬렉션 만들기 - singletonXXX( )
+- 컬렉션과 관련된 메서드(static)를 제공
+- Collection은 인터페이스이지만, Collections는 클래스이다.
+1. 컬렉션 채우기, 복사, 정렬, 검색 - fill(), copy(), sort(), binarySearch() 등
+2. 컬렉션의 동기화 - synchronizedXXX();
+3. 변경불가(readOnly) 컬렉션 만들기 - unmodifiableXXX( )
+4. 싱글톤 컬렉션 만들기 - singletonXXX( ) </br>
 객체 1개만 저장
-한 종류의 객체만 저장하는 컬렉션 만들기 - checkedXXX( )
-지네릭스: 한 종류 저장 컬렉션
+5. 한 종류의 객체만 저장하는 컬렉션 만들기 - checkedXXX( ) </br>
+지네릭스 주로 사용
 
 ### 1.14 컬렉션 클래스 정리 & 요약
-컬렉션
-특징
-ArrayList
-배열기반. 데이터의 추가와 삭제에 불리. 순차적인 추가삭제는 제일 빠름. 
-임의의 요소에 대한 접근성(accessibility)이 뛰어남.
-LinkedList
-연결기반. 데이터의 추가와 삭제에 유리. 임의의 요소에 대한 접근성이 좋지 않다.
-HashMap
-배열과 연결이 결합된 형태. 추가, 삭제, 검색, 접근성이 모두 뛰어남. 검색에는 최고성능을 보인다.
-TreeMap
-연결기반. 정렬과 검색(특히 범위검색)에 적합. 검색성능은 HashMap보다 떨어짐.
-Stack
-Vector를 상속받아 구현
-Queue
-LinkedList가 Queue인터페이스를 구현
-Properties
-Hashtable을 상속받아 구현
-HashSet
-HashMap을 이용해서 구현
-TreeSet
-TreeMap을 이용해서 구현
-LinkedHashMap
-LinkedHashSet
-HashMap과 HashSet에 저장 순서 유지 기능을 추가
+|컬렉션|특징|
+|---|---|
+|ArrayList|배열기반. 데이터의 추가와 삭제에 불리. 순차적인 추가삭제는 제일 빠름. 임의의 요소에 대한 접근성(accessibility)이 뛰어남.|
+|LinkedList|연결기반. 데이터의 추가와 삭제에 유리. 임의의 요소에 대한 접근성이 좋지 않다.|
+|HashMap|배열과 연결이 결합된 형태. 추가, 삭제, 검색, 접근성이 모두 뛰어남. 검색에는 최고성능을 보인다.|
+|TreeMap|연결기반. 정렬과 검색(특히 범위검색)에 적합. 검색성능은 HashMap보다 떨어짐.|
+|Stack|Vector를 상속받아 구현|
+|Queue|LinkedList가 Queue인터페이스를 구현|
+|Properties|Hashtable을 상속받아 구현|
+|HashSet|HashMap을 이용해서 구현|
+|TreeSet|TreeMap을 이용해서 구현|
+|LinkedHashMap, LinkedHashSet|HashMap과 HashSet에 저장 순서 유지 기능을 추가|
 
 <img src="./collection.png">
