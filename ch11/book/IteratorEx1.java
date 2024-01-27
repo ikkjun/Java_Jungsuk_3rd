@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * list에 5,2, 3, 4, 1 추가
+ * ArrayList 타입의 list에 새로운 객체룰 생성하고
+ * "1", "2", "3", "4", "5"를 추가하라
+ * iterator를 사용하여 list에 있는 모든 원소를 출력하라.
  */
 public class IteratorEx1 {
 
