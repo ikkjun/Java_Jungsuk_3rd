@@ -91,7 +91,7 @@ Queue q = new LinkedList( )
 
 #### Queue의 변형
 ##### PriorityQueue
-- 저장한 순서에 관계없이 우선순위(priority)가 높은 것부터 꺼내게 된다. 
+- 저장한 순서에 관계없이 우선순위(priority)가 높은 것부터 꺼내게 된다. 우선순위는 숫자가 작을수록 높다.
 - null은 저장할 수 없다. null을 저장하면 NullPointerException이 발생한다. 
 - 저장공간으로 배열을 사용, 각 요소를 힙(heap) 자료구조의 형태로 저장한다. 
 
