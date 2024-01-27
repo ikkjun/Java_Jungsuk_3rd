@@ -3,6 +3,9 @@ package book;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * list에 5,2, 3, 4, 1 추가
+ */
 public class IteratorEx1 {
 
 	public static void main(String[] args) {
