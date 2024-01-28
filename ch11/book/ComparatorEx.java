@@ -3,6 +3,22 @@ package book;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * ComparatorEx 클래스의 main 메서드에 String 배열 strArr을 선언해서
+ * strArr에 {"cat", "Dog", "lion", "tiger"}를 저장.
+ *
+ * Arrays.sort를 이용해서 strArr을 정렬
+ * Arrays.toString을 이용해서 strArr 출력
+ *
+ * Arrays.sort로 String.Case_insensitive_order를 이용해 정렬
+ * 출력
+ *
+ * Arrays.sort로 Descending()으로 정렬
+ * 출력
+ *
+ * Descending 클래스는 Comparator구현해서 내림차순 정렬
+ */
+
 public class ComparatorEx {
 
 	public static void main(String[] args) {
