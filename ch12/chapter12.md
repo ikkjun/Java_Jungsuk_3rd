@@ -109,43 +109,52 @@ public static <T extends Comparable<? super T>> void sort(List<T> list)
 - 서로 관련된 상수를 편리하게 선언하기 위한 것이다.
 - 자바의 열거형은 '타입에 안전한 열거형(typesafe enum)'이라서 열거형이 갖는 값과 타입을 체크한다.
 
-2.2 열거형의 정의와 사용
-정의하는 방법: enum 열거형이름 { 상수명1, 상수명2, … }
-사용하는 방법: 열거형이름.상수명
+### 2.2 열거형의 정의와 사용
+- 정의하는 방법: enum 열거형이름 { 상수명1, 상수명2, … }
+- 사용하는 방법: 열거형이름.상수명
 
-열거형의 비교
+#### 열거형의 비교
 비교에는 ‘==’을 사용할 수 있지만, <와 >같은 비교연산자는 사용할 수 없고 compareTo( )는 사용할 수 있다(열거형의 원소는 객체이다). compareTo( )는 두 비교대상이 같으면 0, 왼쪽이 크면 양수, 오른쪽이 크면 음수를 반환한다.
 
-모든 열거형의 조상 - java.lang.Enum
-String name( ): 	열거형 상수의 이름을 문자열로 반환
-int ordinal( ): 	열거형 상수가 정의된 순서를 반환(0부터 시작)
-values( )와 valuesOf( )는 컴파일러가 자동적으로 추가해준다.
+#### 모든 열거형의 조상 - java.lang.Enum
+- String name( ): 	열거형 상수의 이름을 문자열로 반환
+- int ordinal( ): 	열거형 상수가 정의된 순서를 반환(0부터 시작)
+- values( )와 valuesOf( )는 컴파일러가 자동적으로 추가해준다.
 
-2.3 열거형에 멤버 추가하기
-불연속적인 열거형 상수의 경우, 원하는 값을 괄호( ) 안에 적는다.
-괄호( )를 사용하려면, 인스턴스 변수와 생성자를 새로 추가해 줘야 한다.
+### 2.3 열거형에 멤버 추가하기
+- 불연속적인 열거형 상수의 경우, 원하는 값을 괄호( ) 안에 적는다.
+- 괄호( )를 사용하려면, 인스턴스 변수와 생성자를 새로 추가해 줘야 한다. (괄호: 생성자 호출)
+```java
 enum Direction { 
 EAST(1), SOUTH(5), WEST(-1), NORTH(10);
 private final int value; // 정수를 저장할 필드(인스턴스 변수)
-Direction(int value) {this.value = value;} // 생성자 추가
+Direction(int value) {this.value = value;} // 생성자 추가. 생성자는 써있지 않아도 항상 private이다.
 public int getValue( ) {return value;}
 }
+```
+#### 열거형의 객체를 생성할 수 없는 이유는?
 열거형의 생성자는 묵시적으로 private이기 때문에 열거형의 객체를 생성할 수 없다. 
 
-2.4 열거형의 이해
+### 2.4 열거형의 이해
 열거형 상수 하나하나가 객체이다.
+```java
+// 열거형 Direction이 아래와 같이 선언되어 있을 때
 enum Direction { EAST, SOUTH, WEST, NORTH}
 
+// 열거형 Direction은 아래와 같은 클래스로 선언된 것과 유사하다.
 class Direction {
-static final Direction EAST = new Direction(“EAST”);
-static final Direction SOUTH = new Direction(“SOUTH”);
-static final Direction WEST = new Direction(“WEST”);
-static final Direction NORTH = new Direction(“NORTH”);
-private String name;
-private Direction(String name) {
-this.name = name;
+	static final Direction EAST = new Direction("EAST");
+	static final Direction SOUTH = new Direction("SOUTH");
+	static final Direction WEST = new Direction("WEST");
+	static final Direction NORTH = new Direction("NORTH");
+  
+	private String name;
+  
+	private Direction(String name) {
+      this.name = name;
+	}
 }
-}
+```
 
 열거형의 원소끼리 ==로 비교가 가능한 이유
 Direction 클래스의 static 상수의 값은 객체의주소이고, 이 값은 바뀌지 않는 값이므로 ‘==’로 비교가 가능한 것이다.
