@@ -49,7 +49,7 @@ Box<Apple> appleBox = new FruitBox<Apple>();	// OK. 다형성
 ### 1.4 제한된 지네릭 클래스
 지네릭 타입에 ‘extends’를 사용하면 특정 타입의 자손들만 대입할 수 있다.
 ```java
-class FruitBox<T extends fruit> { } // Fruit과 그의 자손만 타입으로 지정 가능
+class FruitBox<T extends Fruit> { } // Fruit과 그의 자손만 타입으로 지정 가능
 ```
 
 클래스가 아니라 인터페이스를 구현해야 한다는 제약이 필요하다면, 이 때도 ‘extends’를 사용한다. ‘implements’를 사용하지 않는다.
