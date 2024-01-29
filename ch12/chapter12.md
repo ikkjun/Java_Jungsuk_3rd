@@ -79,15 +79,15 @@ static Juice makeJuice(FruitBox<Apple> box) { }
 <? super T>	와일드 카드의 하한 제한. T와 그 조상들만 가능</br>
 <?>		제한 없음(모든 타입 가능). <? extends Object>와 동일
 
-1.6 지네릭 메서드
-메서드의 선언부에 지네릭 타입이 선언된 메서드
-지네릭 클래스에 정의된 타입 매개변수와 지네릭 메서드에 정의된 타입 매개변수는 전혀 다른 별개의 것이다.
-static멤버에는 타입 매개변수를 사용할 수 없지만, 메서드에 지네릭 타입을 선언하고 사용하는 것은 가능하다.(지역변수를 선언한 것과 유사)
-메서드를 호출할 때마다 타입을 대입해야 한다(대부분 생략 가능).
-메서드를 호출할 때 타입을 생략하지 않을 때는 클래스 이름 생략 가능
+### 1.6 지네릭 메서드
+- 메서드의 선언부에 지네릭 타입이 선언된 메서드 
+- 지네릭 클래스에 정의된 타입 매개변수와 지네릭 메서드에 정의된 타입 매개변수는 전혀 다른 별개의 것이다. 
+- static멤버에는 타입 매개변수를 사용할 수 없지만, 메서드에 지네릭 타입을 선언하고 사용하는 것은 가능하다.(지역변수를 선언한 것과 유사)
+- 메서드를 호출할 때마다 타입을 대입해야 한다(대부분 생략 가능). 
+- 메서드를 호출할 때 타입을 생략하지 않을 때는 클래스 이름 생략 가능
 
-public static <T extends Comparable<? super T>> void sort(List<T> list)
-① 타입 T를 요소로 하는 List를 매개변수로 허용한다.
+public static <T extends Comparable<? super T>> void sort(List<T> list)</br>
+① 타입 T를 요소로 하는 List를 매개변수로 허용한다.</br>
 ② ‘T’는 Comparable을 구현한 클래스이여야 하며(<T extends Comparable> ), ‘T’ 또는 그 조상의 타입을 비교하는 Comparable이어야 한다는 것(Comparable<? super T>)을 의미한다. 만일 T가 Student이고, Person의 자손이라면, <? super T>는 Student, Person, Object가 모두 가능하다.
 
 ### 1.7 지네릭 타입의 형변환
@@ -124,6 +124,7 @@ public static <T extends Comparable<? super T>> void sort(List<T> list)
 ### 2.3 열거형에 멤버 추가하기
 - 불연속적인 열거형 상수의 경우, 원하는 값을 괄호( ) 안에 적는다.
 - 괄호( )를 사용하려면, 인스턴스 변수와 생성자를 새로 추가해 줘야 한다. (괄호: 생성자 호출)
+- 열거형의 생성자는 묵시적으로 private이므로, 외부에서 객체 생성 불가
 ```java
 enum Direction { 
 EAST(1), SOUTH(5), WEST(-1), NORTH(10);
