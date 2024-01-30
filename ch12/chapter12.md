@@ -197,94 +197,79 @@ Direction 클래스의 static 상수의 값은 객체의주소이고, 이 값은
 
 #### @SupressWarnings
 - 컴파일러가 보여주는 경고메시지가 나타나지 않게 억제해준다.
-- 억제하는 경고 메시지를 애너테이션의 뒤 괄호( )안에 문자열로 지정하면 된다. ex. @SuppressWarnings("unchecked")
-둘 이상의 경고를 동시에 억제하려면 배열에서처럼 괄호{ }를 추가로 사용한다.
-새로 추가된 경고 메시지를 억제하려면, 경고 메시지의 종류를 알아야 하는데, -Xlint옵션으로 컴파일해서 나타나는 경고의 내용 중에서 대괄호[ ] 안에 있는 것이 바로 메시지의 종류이다.
+- 억제하는 경고 메시지를 애너테이션의 뒤 괄호( )안에 문자열로 지정하면 된다. </br>@SuppressWarnings("unchecked")
+- 둘 이상의 경고를 동시에 억제하려면 배열에서처럼 괄호{ }를 추가로 사용한다.</br>@SuppressWarnings({"deprecation", "unchecked"})
+- 새로 추가된 경고 메시지를 억제하려면, 경고 메시지의 종류를 알아야 하는데, -Xlint옵션으로 컴파일해서 나타나는 경고의 내용 중에서 대괄호[ ] 안에 있는 것이 바로 메시지의 종류이다.
 
-억제할 수 있는 경고 메시지의 종류
-deprecation: @Deprecated가 붙은 대상을 사용해서 발생하는 경고
-unchecked: 지네릭스로 타입을 지정하지 않았을 때 발생하는 경고
-rawtypes: 지네릭스를 사용하지 않아서 발생하는 경고
-varargs: 가변인자의 타입이 지네릭 타입일 때 발생하는 경고를 억제
+##### 억제할 수 있는 경고 메시지의 종류
+1. deprecation: @Deprecated가 붙은 대상을 사용해서 발생하는 경고 
+2. unchecked: 지네릭스로 타입을 지정하지 않았을 때 발생하는 경고 
+3. rawtypes: 지네릭스를 사용하지 않아서 발생하는 경고 
+4. varargs: 가변인자의 타입이 지네릭 타입일 때 발생하는 경고를 억제
 
-@SafeVarargs
-메서드에 선언된 가변인자의 타입이 non-reifiable타입일 경우 발생하는  “unchecked”경고를 억제하기 위해 '@SafeVarargs'를 사용해야 한다.
-컴파일 후에도 제거되지 않는 타입을 reifiable타입이라고 하고, 제거되는 타입을 non - reifiable타입이 라고 한다. 지네릭 타입들은 대부분 컴파일 시에 제거되므로 non-reifiable타입이다.
-static이나 final이 붙은 메서드와 생성자에만 붙일 수 있다. 
-즉. 오버라이드 될 수 있는 메서드에는 사용할 수 없다.
+#### @SafeVarargs
+메서드에 선언된 가변인자의 타입이 non-reifiable타입일 경우 발생하는  “unchecked”경고를 억제하기 위해 '@SafeVarargs'를 사용해야 한다.</br>
+컴파일 후에도 제거되지 않는 타입을 reifiable타입이라고 하고, 제거되는 타입을 non - reifiable타입이 라고 한다. 지네릭 타입들은 대부분 컴파일 시에 제거되므로 non-reifiable타입이다.</br>
+static이나 final이 붙은 메서드와 생성자에만 붙일 수 있다. </br>
+즉, 오버라이드 될 수 있는 메서드에는 사용할 수 없다.
 @SafeVarargs로 'unchecked'경고는 억제할 수 있지만, 'varargs'경고는 억제 할 수 없기 때문에 습관적으로 @SafeVarargs와 @SuppressWarnings("varargs")를 같이 붙인다.
 
 
-3.3 메타 애너테이션
+### 3.3 메타 애너테이션
 메타 애너테이션은 ‘애너테이션을 위한 애너테이션’, 즉 애너테이션에 붙이는 애너데이션으로 애너테이션을 정의할 때 애너테이션의 적용대상(target)이나 유지기간(retention)등을 지정하는데 사용된다.
 
-@Target*
+#### @Target*
 애너테이션이 적용가능한 대상을 지정하는데 사용된다.
 
 @Target으로 지정할 수 있는 애너테이션 적용대상의 종류
-대상 타입
-의미
-ANNOTATION_TYPE
 
+|대상 타입|의미|
+|---|---|
+|ANNOTATION_TYPE|애너테이션|
+|CONSTRUCTOR|생성자|
+|FIELD|필드(멤버변수, enum상수)|
+|LOCAL_VARIABLE|지역변수|
+|METHOD|메서드|
+|PACKAGE|패키지|
+|PARAMETER|매개변수|
+|TYPE|타입(클래스, 인터페이스, enum)|
+|TYPE_PARAMETER|타입 매개변수|
+|TYPE_USE|타입이 사용되는 모든 곳|
 
-CONSTRUCTOR
-생성자
-FIELD
-필드(멤버변수, enum상수)
-LOCAL_VARIABLE
-지역변수
-METHOD
-메서드
-PACKAGE
-패키지
-PARAMETER
-매개변수
-TYPE
-타입(클래스, 인터페이스, enum)
-TYPE_PARAMETER
-타입 매개변수
-TYPE_USE
-타입이 사용되는 모든 곳
-
-
-@Retention
+#### @Retention
 애너테이션이 유지(retention)되는 기간을 지정하는데 사용된다.
 컴파일러가 사용하는 애너테이션은 유지 정책이 ‘SOURCE’이다.
 실행 시에 사용가능한 애너테이션은 유지 정책이 ‘RUNTIME’이다.
 
+##### 애너테이션 유지정책(retention policy)의 종류
 
+|유지 정책|의미|
+|---|---|
+|SOURCE|소스 파일에만 존재. 클래스파일에는 존재하지 않음.|
+|CLASS|클래스 파일에 존재. 실행시에 사용불가. 기본값|
+|RUNTIME|클래스 파일에 존재. 실행시에 사용가능.|
 
-
-애너테이션 유지정책(retention policy)의 종류
-유지 정책
-의미
-SOURCE
-소스 파일에만 존재. 클래스파일에는 존재하지 않음.
-CLASS
-클래스 파일에 존재. 실행시에 사용불가. 기본값
-RUNTIME
-클래스 파일에 존재. 실행시에 사용가능.
-
-
-@Documented*
+#### @Documented*
 애너테이션에 대한 정보가 javadoc으로 작성한 문서에 포함되도록 한다.
 
-@Inherited*
+#### @Inherited*
 애너테이션이 자손 클래스에 상속되도록 한다.
 
-@Repeatable
+#### @Repeatable
 보통은 하나의 대상에 한 종류의 애너테이션을 붙이는데, ‘@Repeatable’이 붙은 애너테이션은 여러 번 붙일 수 있다.
 
-@Native
+#### @Native
 네이티브 메서드(native method)에 의해 참조되는 상수 필드(constant field)에 붙이는 애너테이션이다. 
 네이티브 메서드는 JVM이 설치된 OS의 메서드를 말한다.
 
-3.4 애너테이션 타입 정의하기	
+### 3.4 애너테이션 타입 정의하기	
 애너테이션을 직접 만들어 쓸 수 있다. ‘@’ 기호를 붙이는 것을 제외하면 인터페이스를 정의하는 것과 동일하다.
+```java
 @interface 애너테이션이름 {
 	타입 요소이름( );	// 애너테이션의 요소를 선언한다.
-	…
+	// ...
 }
+```
 
 애너테이션의 요소
 애너테이션 내에 선언된 메서드를 ‘애너테이션의 요소'라고 한다. 
