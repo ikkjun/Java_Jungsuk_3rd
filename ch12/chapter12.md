@@ -271,42 +271,48 @@ static이나 final이 붙은 메서드와 생성자에만 붙일 수 있다. </b
 }
 ```
 
-애너테이션의 요소
-애너테이션 내에 선언된 메서드를 ‘애너테이션의 요소'라고 한다. 
-애너테이션의 요소는 반환값이 있고 매개변수는 없는 추상 메서드의 형태이다.
-상속을 통해 구현하지 않아도 되지만, 애너테이션을 적용할 때 이 요소들의 값을 빠짐없이 지정해야 한다. 요소의 이름도 같이 적어주므로 순서는 상관 없다.
+#### 애너테이션의 요소
+- 애너테이션 내에 선언된 메서드를 ‘애너테이션의 요소'라고 한다. 
+- 애너테이션의 요소는 반환값이 있고 매개변수는 없는 추상 메서드의 형태이다. 
+- 상속을 통해 구현하지 않아도 되지만, 애너테이션을 적용할 때 이 요소들의 값을 빠짐없이 지정해야 한다. 요소의 이름도 같이 적어주므로 순서는 상관 없다.
 				
-애너테이션 요소의 기본값
+#### 애너테이션 요소의 기본값
 애너테이션의 각 요소는 기본값을 가질 수 있으며, 기본값이 있는 요소는 애너테이션을 적용할 때 값을 지정하지 않으면 기본값이 사용된다.
+```java
 @interface TestInfo {
 	int count( ) default 1;	// 기본값을 1로 지정
 }
 @TestInfo		// @TestInfo(count = 1)과 동일
+```
 애너테이션 요소가 오직 하나뿐이고 이름이 value인 경우, 애너테이션을 적용할 때 요소의 이름을 생략하고 값만 적어도 된다.
+```java
 @interface TestInfo {
 	String value( );
 }
-@TestInfo(“passed”)	// @TestInfo(value = “passed”)와 동일
+@TestInfo("passed")	// @TestInfo(value = “passed”)와 동일
+```
 
 요소의 타입이 배열인 경우 괄호 { }를 사용해서 여러 개의 값을 지정할 수 있다.
+```java
 @interface TestInfo {
 	String[ ] testTools( );
 }
-@Test(testTools = {“JUnit”, “AutoTester”})	// 값이 여러 개인 경우
-@Test(testTools = “JUnit”)	// 값이 하나일 때는 괄호 { } 생략 가능
+@Test(testTools = {"JUnit", "AutoTester"})	// 값이 여러 개인 경우
+@Test(testTools = "JUnit")	// 값이 하나일 때는 괄호 { } 생략 가능
 @Test(testTools = { })	// 값이 없을 때는 괄호 { }가 반드시 필요
+```
 
-java.lang.annotation.Annotation
+#### java.lang.annotation.Annotation
 모든 애너테이션의 조상은 Annotation이다. 그러나 애너테이션은 상속이 허용되지 않으므로 명시적으로 Annotation을 조상으로 지정할 수 없다.
 Annotation은 애너테이션이 아니라 일반적인 인터 페이스로 정의되어 있다.
 
-마커 애너테이션 Marker Annotation
+#### 마커 애너테이션 Marker Annotation
 값을 지정할 필요가 없는 경우, 애너데이션의 요소를 하나도 정의하지 않을 수 있다. 
 
-애너테이션 요소의 규칙
-요소의 타입은 기본형, String, enum, 애너테이션, Class만 허용
-( )안에 매개변수를 선언할 수 없다.
-예외를 선언할 수 없다.
-요소를 타입 매개변수로 정의할 수 없다.
+#### 애너테이션 요소의 규칙
+- 요소의 타입은 기본형, String, enum, 애너테이션, Class만 허용
+- ( )안에 매개변수를 선언할 수 없다. 
+- 예외를 선언할 수 없다. 
+- 요소를 타입 매개변수로 정의할 수 없다.
 
 
