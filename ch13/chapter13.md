@@ -46,7 +46,7 @@ class MyThread implements Runnable {
 }
 ```
 
-Thread 클래스를 상속받으면, 자손 클래스에서 조상인 Thread클래스의 메서드를 직접 호출할 수 있지만, Runnable을 구현하면 Thread클래스의 static메서드인 currentThread()를 호출하여 쓰레드에 대한 참조를 얻어와야만 호출이 가능하다.
+Thread 클래스를 상속받으면, 자손 클래스에서 조상인 Thread클래스의 메서드를 직접 호출할 수 있지만, Runnable을 구현하면 Thread클래스의 static메서드인 currentThread()를 호출하여 쓰레드에 대한 참조를 얻어와야만 호출이 가능하다.</br>
 그래서 Thread를 상속받은 클래스에서는 간단히 getName()을 호출하면 되지만, Runnable을 구현한 클래스의 멤버는 run() 밖에 없기 때문에 Thread클래스의 getName()을 호출하려면 Thread.currentThread().getName()와 같이 해야 한다.
 ```java
 static Thread currentThread()
@@ -61,7 +61,7 @@ String getName( )
 main메서드에서 run()을 호출하는 것은 생성된 쓰레드를 실행시키는 것이 아니라 단순히 클래스에 선언된 메서드를 호출하는 것일 뿐이다.
 
 #### start( )
-반면에 start( )는 새로운 쓰레드가 작업을 실행하는데 필요한 호출스택(call stack)을 생성한 다음에 run()을 호출해서 생성된 호출스택에 run()이 첫 번째로 올라가게 한다.
+반면에 start( )는 새로운 쓰레드가 작업을 실행하는데 필요한 호출스택(call stack)을 생성한 다음에 run()을 호출해서 생성된 호출스택에 run()이 첫 번째로 올라가게 한다.</br>
 모든 쓰레드는 독립적인 작업을 수행하기 위해 자신만의 호출스택을 필요로 하기 때문에, 새로운 쓰레드를 생성하고 실행시킬 때마다 새로운 호출스택이 생성되고 쓰레드가 종료되면 작업에 시용된 호출스택은 소멸된다.
 
 #### main쓰레드
