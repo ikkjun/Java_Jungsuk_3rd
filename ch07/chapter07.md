@@ -88,7 +88,7 @@ out.println(random()); // System.out.println(Math.random());
 ### 제어자란?
 클래스, 변수, 메서드의 선언부에 사용되어 부가적인 의미 부여(형용사)
 - 접근 제어자: public, protected, default, private(제일 왼쪽)
-- 그 외: static, final, abstract, naive … </br>
+- 그 외: static, final, abstract, native, synchronized, volatile … </br>
 
 하나의 대상에 대해서 여러 제어자를 사용하는 것이 가능하지만, 접근 제어자는 하나만 선택해서 사용할 수 있다.
 
