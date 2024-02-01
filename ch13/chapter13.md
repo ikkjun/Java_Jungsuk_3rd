@@ -135,7 +135,7 @@ sleep( )에 의해 일시정지 상태가 된 쓰레드는 지정된 시간이 �
 sleep( )의 호출 방법
 sleep()이 항상 현재 실행 중인 쓰레드에 대해 작동하기 때문에 th1.sleep(2000)과 같이 호출하였어도 실제로 영향을 받는 것은 main메서드를 실행하는 main쓰레드이다. 그래서 sleep( )은 static으로 선언되어 였으며 참조변수를 이용해서 호출하기 보다는 Thread.sleep(2000);과 같이 해야 한다.
 
-interrupt( )와 interrupted( ) - 쓰레드의 작업을 취소한다.
+#### interrupt( )와 interrupted( ) - 쓰레드의 작업을 취소한다.
 쓰레드가 sleep( ), wait( ), join ( )에 의해 일시정지 상태(WAITING)에 있을 때, 해당 쓰레드에 대해 interrupt( )를 호출하면, sleep( ), wait( ), join( )에서 Interruptedexception이 발생하고 쓰레드는 '실행대기 상태(RUNNABLE)'로 바뀐다. 즉, 멈춰있던 쓰레드를 깨워서 실행가능한 상태로 만드는 것이다.
 
 suspend( ), resume( ), stop( )
@@ -199,20 +199,17 @@ synchronized(객체의 참조변수) {
 계속 통지를 받지 못하고 오랫동안 기다리는 것을 ‘기아(starvation) 현상’ 이라고 한다. 이 현상을 막으려면, notify( )대신 notifyAll( )을 사용해야 한다.
 notifyAll( )로 쓰레드의 기아현상은 막았지만, 여러 쓰레드가 lock을 얻기 위해 서로 경쟁하는 ‘경쟁 상태(race condition)’를 개선하기 위해 Lock과 Condition을 이용해야 한다.
 
-
-
-9.3 Lock과 Condition을 이용한 동기화
+### 9.3 Lock과 Condition을 이용한 동기화
 synchronized블록으로 동기화를 하면 같은 메서드 내에서만 lock을 걸 수 있다는 제약이 불편하다. 그럴 때 lock클래스를 사용한다.
 
-lock클래스의 종류
-ReentrantLock
+#### lock클래스의 종류
+1. ReentrantLock</br>
 재진입이 가능한 lock. 가장 일반적인 배타적인 lock.
-
-ReentrantReadWriteLock
+2. ReentrantReadWriteLock</br>
 읽기에는 공유적이고, 쓰기에는 배타적인 lock
-
-StampedLock
+3. StampedLock</br>
 ReentrantReadWriteLock에 낙관적인 lock의 기능을 추가.
+
 읽기 lock이 걸려있으면, 쓰기 lock을 얻기 위해서는 읽기 lock이 풀릴 때까지 기다려야 하지만, ‘낙관적 읽기 lock’은 쓰기 lock에 의해 바로 풀린다. 무조건 읽기 lock을 걸지 않고. 쓰기와 읽기가 충돌할 때만 쓰기가 끝난 후에 읽기 lock을 거는 것이다.
 
 ReentrantLock의 생성자
@@ -249,7 +246,7 @@ final Condition notEmpty = lock.newCondition();
 
 
 
-9.4 volatile
+### 9.4 volatile
 성능 향상을 위해 코어는 메모리에서 읽어온 값을 캐시에 저장하고 캐시에서 값을 읽어서 작업한다. 다시 같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고 없을 때만 메모리에서 읽어온다. 그러다보니 도중에 메모리에 저장된 변수의 값이 변경되었는데도 캐시에 저장된 값이 갱신되지 않아서 메모리에 저장된 값이 다른 경우가 발생한다. 그러나 변수 앞에 volatile을 붙이면, 코어가 변수의 값을 읽어올 때 캐시가 아닌 메모리에서 읽어오기 때문에 캐시와 메모리간의 값의 불일치가 해결된다.
 
 volatile로 long과 double을 원자화
