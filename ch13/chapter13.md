@@ -180,22 +180,22 @@ synchronized(객체의 참조변수) {
 ```
 읽고 쓰는 객체에 모두 동기화 필요
 
-9.2 wait( )과 notify( )
+### 9.2 wait( )과 notify( )
 동기화의 효율을 높이기 위해 wait( )과 notify( )를 사용한다.
 
-wait( ), notify( ), notifyAll( )
+#### wait( ), notify( ), notifyAll( )
 특정 객체에 대한 것이므로 Object에 정의되어 있다.
 동기화 블록(synchronized 블록)내에서만 사용할 수 있다.
 보다 효율적인 동기화를 가능하게 한다.
 
-wait( )
+##### wait( )
 실행중이던 쓰레드는 해당 객체의 waiting pool(대기실)에서 통지를 기다린다.
-notify( )
+##### notify( )
 해당 객체의 waiting pool에 있던 모든 쓰레드 중 임의의 쓰레드만 통지 받는다
-notifyAll( )
+##### notifyAll( )
 기다리고 있는 모든 쓰레드에게 통보를 하지만, 그래도 lock을 얻을 수 있는 것은 하나의 쓰레드일 뿐이고 나머지 스레드는 통보를 받긴 했지만, lock을 얻지 못하면 다시 lock을 기다리는 신세가 된다.
 
-기아 현상과 경쟁상태
+#### 기아 현상과 경쟁상태
 계속 통지를 받지 못하고 오랫동안 기다리는 것을 ‘기아(starvation) 현상’ 이라고 한다. 이 현상을 막으려면, notify( )대신 notifyAll( )을 사용해야 한다.
 notifyAll( )로 쓰레드의 기아현상은 막았지만, 여러 쓰레드가 lock을 얻기 위해 서로 경쟁하는 ‘경쟁 상태(race condition)’를 개선하기 위해 Lock과 Condition을 이용해야 한다.
 
