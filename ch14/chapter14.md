@@ -1,28 +1,46 @@
 # Chapter 14. 람다와 스트림(Lambda & Stream)
-1. 람다식
-   1.1 람다식(Lambda expression)이란?
-   메서드를 하나의 ‘식(expression)’으로 표현한 것이다.
-   메서드를 람다식으로 표현하면 메서드의 이름과 반환값이 없어지므로. 람다식을 ‘익명 함수(anonymous function)’라고도 한다.
+## 1. 람다식
+### 1.1 람다식(Lambda expression)이란?
+메서드를 하나의 '식(expression)'으로 표현한 것이다.</br>
+메서드를 람다식으로 표현하면 메서드의 이름과 반환값이 없어지므로. 람다식을 ‘익명 함수(anonymous function)’라고도 한다.
 
-함수와 메서드의 차이
+#### 함수와 메서드의 차이
 근본적으로 함수와 메서드는 동일하다. 다만 함수는 일반적 용어이고, 메서드는 객체지향개념의 용어이다. 즉, 함수는 클래스에 독립적이고, 메서드는 클래스에 종속적이다.
 
-1.2 람다식 작성하기
-메서드의 이름과 반환타입 제거, 매개변수 선언부와 몸통{ } 사이에 -> 추가 int max(int a, int b) {return a > b ? a : b;} → int max(int a, int b) -> {return a > b ? a : b;}
-반환값이 있는 메서드의 경우. return문을 식이나 값으로 대신할 수 있다. 문장이 아닌 식이므로 끝에 ‘;’을 붙이지 않는다.  (int a, int b) -> {return a > b ? a : b;} → (int a, int b) -> a> b ? a : b
-람다식에 선언된 매개변수의 타입은 추론이 가능한 경우는 생략할 수 있다. 대부분의 경우에 생략할 수 있다. (int a, int b) -> a> b ? a : b → (a, b) -> a > b ? a : b
+### 1.2 람다식 작성하기
+1. 메서드의 이름과 반환타입 제거, 매개변수 선언부와 몸통{ } 사이에 -> 추가</br>
+```java
+int max(int a, int b) {return a > b ? a : b;}
+(int a, int b) -> {return a > b ? a : b;}
+```
+2. 반환값이 있는 메서드의 경우 return문을 식이나 값으로 대신할 수 있다. 문장이 아닌 식이므로 끝에 ‘;’을 붙이지 않는다.
+```java
+(int a, int b) -> {return a > b ? a : b;}
+(int a, int b) -> a> b ? a : b
+```
+3. 람다식에 선언된 매개변수의 타입은 추론이 가능한 경우는 생략할 수 있다. 대부분의 경우에 생략할 수 있다.
+```java
+(int a, int b) -> a> b ? a : b
+(a, b) -> a > b ? a : b
+```
 
-매개변수가 하나뿐인 경우에는 괄호( )를 생략할 수 있다. 단 매개변수의 타입이 있으면 괄호( )를 생략할 수 없다.
-(a)             -> a * a → a           -> a * a  // OK
-(int a)      -> a * a → int a    -> a * a  // 에러
+- 매개변수가 하나뿐인 경우에는 괄호( )를 생략할 수 있다. 단 매개변수의 타입이 있으면 괄호( )를 생략할 수 없다.
+```java
+(a)     -> a * a → a     -> a * a  // OK
+(int a)	-> a * a → int a -> a * a  // 에러
+```
 
-괄호{ } 안의 문장이 하나일때는 괄호{ }를 생략할 수 있다. 끝에 ‘;’을 안 붙인다.
+- 괄호{ } 안의 문장이 하나일때는 괄호{ }를 생략할 수 있다. 끝에 ‘;’을 안 붙인다.
+```java
 (String name, int i)-> {sysout(name + “=” + i);}
-→ (String name, int i) -> sysout(name + “=” + i)
+(String name, int i) -> sysout(name + “=” + i)
+```
 
-그러나 괄호{ } 안의 문장이 return문일 경우 괄호{ }를 생략할 수 없다.
-(int a, int b) -> {return a > b ? a : b;}                // OK
-(int a, int b) -> return a > b ? a : b // 에러
+- 그러나 괄호{ } 안의 문장이 return문일 경우 괄호{ }를 생략할 수 없다.
+```java
+(int a, int b) -> {return a > b ? a : b;} // OK
+(int a, int b) -> return a > b ? a : b    // 에러
+```
 
 1.3 함수형 인터페이스(Functional Interface)
 람다식은 익명 클래스의 객체와 동등하다.
