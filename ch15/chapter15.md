@@ -11,8 +11,18 @@
 - 그래서 입력과 출력을 동시에 수행하려면 입력을 위한 입력스트림(input stream)과 출력을 위한 출력스트림(output stream) 두 개의 스트림이 필요하다.
 
 ### 1.3 바이트기반 스트림 - InputStream, OutputStream
+스트림은 바이트 단위로 데이터를 주고 받는다.</br>
+InputStream의 read()메서드는 반드시 구현되어야 하는 메서드이고, read()없이는 read(byte[] b, int off, int len)와 read(byte[] b)는 의미가 없다는 것을 확인할 수 있다.
+
 ### 1.4 보조스트림
+보조스트림은 실제 데이터를 주고 받는 스트림이 아니기 때문에 독립적으로 데이터를 입출력할 수 있는 기능은 없지만, 
+스트림의 기능을 향상시키거나 새로운 기능을 추가하기 위해 사용된다.
+
 ### 1.5  문자기반 스트림 - Reader, Writer
+지금까지 알아본 스트림은 모두 입출력의 단위가 1byte인 바이트 기반의 스트림이었다.
+문자를 처리하는 데 어려움이 있다는 점에서 입출력 단위가 문자(char, 2byte)인 문자기반의 스트림이 제공된다.
+InputStream → Reader
+OutputStream → Writer
 
 ## 2. 바이트기반 스트림
 2.1 InputStream과 OutputStream
