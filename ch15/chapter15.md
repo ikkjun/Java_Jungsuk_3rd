@@ -32,7 +32,8 @@ InputStream과 OutputStream은 모든 바이트기반의 스트림의 조상이�
 
 ### 2.2 ByteArrayInputStream과 ByteArrayOutputStream
 ByteArrayInputStream과 ByteArrayOutputStream은 바이트배열에 데이터를 입출력하는데 사용되는 스트림이다. 
-바이트 배열은 사용하는 자원이 메모리 밖에 없으므로 가비지컬렉터에 의해 자동적으로 자원을 반환하므로 close()를 이용해서 스트림을 닫지 않아도 된다.
+바이트 배열은 사용하는 자원이 메모리 밖에 없으므로 가비지컬렉터에 의해 자동적으로 자원을 반환하므로 close()를 이용해서 스트림을 닫지 않아도 된다.</br>
+보다 나은 성능을 위해 바이트 배열에 담긴 내용을 지우고 쓰는 것이 아니라 기존의 내용 위에 덮어 쓴다. 원하는 결과를 얻기 위해서는 읽어 온 byte의 수를 저장하는 변수를 새로 선언해서 읽어 온 만큼만 출력하도록 변경해야 한다.
 
 ### 2.3 FileInputStream과 FileOutputStream
 파일에 데이터를 입출력하는 바이트기반 스트림
