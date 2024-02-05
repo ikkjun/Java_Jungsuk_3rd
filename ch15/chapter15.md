@@ -1,0 +1,134 @@
+# Chapter 15. 입출력 I/O
+## 1. 자바에서의 입출력
+### 1.1 입출력이란?
+I/O란 Input과 Output의 약자로 입력과 출력, 간단히 줄여서 입출력이라고 한다. 입출력 은 컴퓨터 내부 또는 외부의 장치와 프로그램간의 데이터를 주고받는 것을 말한다.
+
+### 1.2 스트림(stream)
+자바에서 입출력을 수행하려면, 두 대상을 연결하고 데이터를 전송할 수 있는 무언가가 필요한데 이것을 스트림(stream)이라고 정의했다. 
+스트림이란 데이터를 운반하는 데 사용되는 연결통로이다.
+
+### 1.3 바이트기반 스트림 - InputStream, OutputStream
+### 1.4 보조스트림
+### 1.5  문자기반 스트림 - Reader, Writer
+
+## 2. 바이트기반 스트림
+2.1 InputStream과 OutputStream
+2.2 ByteArrayInputStream과 ByteArrayOutputStream
+2.3 FileInputStream과 FileOutputStream
+
+3. 바이트 기반의 보조스트림
+3.1 FilterInputStream과 FilterOutputStream
+3.2 BufferedInputStream과 BufferedOutputStream
+3.3 DataInputStream과 DataOutputStream
+3.4 SequenceInputStream
+3.5 PrintStream
+
+4. 문자기반 스트림
+   4.1 Reader와 Writer
+   바이트기반 스트림의 조상이 InputStream/OutputStream인 것과 같이 Reader는 문자기반 입력 스트림의 최고 조상이며 Writer는 문자기반 출력 스트림의 최고 조상이다.
+
+문자기반 스트림이라는 것이 단순히 2 byte로 스트림을 처리하는 것만을 의미하지는 않는다. 문자기반 스트림, 즉 Reader와 Writer 그리고 그 자손들은 여러 종류의 인코딩과 자바에서 사용하는 유니코드(UTF-16)간의 변환을 자동적으로 처리해준다. Reader는 특정 인코딩을 읽어서 유니코드로 변환하고 Writer는 유니코드를 특정 인코딩으로 변환하여 저장한다.
+
+4.2 FileReader와 FileWriter
+FileReader와 FileWriter는 파일로부터 텍스트데이터를 읽고, 파일에 쓰는데 사용된다.
+
+4.3 PipedReader와 PipedWriter
+PipedReader와 PipedWriter는 쓰레드 간에 데이터를 주고받을 때 사용된다. 입력과 출력스트림을 하나의 스트림으로 연결(connect)해서 데이터를 주고받는다. 스트림을 생성한 다음에 어느 한쪽 쓰레드에서 connect( )를 호출해서 입력스트림과 출력스트림을 연결한다. 입출력을 마친 후에는 어느 한쪽 스트림만 닫아도 나머지 스트림은 자동으로 닫힌다.
+
+4.4 StringReader와 StringWriter
+StringReader/StringWriter는 CharArrayReader/CharArrayWriter와 같이 입출력 대상이 메모리인 스트림이다. StringWriter에 출력되는 데이터는 내부의 StringBuffer에 저장된다.
+
+StringBuffer getBuffer()
+StringWriter에 출력한 데이터가 저장된 StringBuffer를 반환한다.
+String toString()
+StringWriter에 출력된(StringBuffer에 저장된) 문자열을 반환한다.
+
+5. 문자기반의 보조스트림
+   5.1 BufferedReader와 BufferedWriter
+   BufferedReader와 BufferedWriter는 버퍼를 이용해서 입출력의 효율을 높일 수 있도록 해주는 역할을 한다. 라인 단위의 입출력이 편리하다.
+   BufferedReader의 readLine( ) 을 사용하면 데이터를 라인단위로 읽을 수 있고 BufferedWriter는 newLine( )이라는 줄바꿈 해주는 메서드를 가지고 있다.
+
+
+5.2 InputStreamReader와 OutputStreamWriter
+InputStreamReader와 OutputStreamWriter는 바이트 기반 스트림을 문자기반 스트림으로 연결시켜 문자기반 스트림처럼 쓸 수 있게 해준다. 그리고 바이트기반 스트림의 데이터를 지정된 인코딩의 문자데이터로 변환하는 작업을 수행한다.
+
+6. 표준입출력과 File
+   6.1 표준입출력 - System.in, System.out, System.err
+   표준입출력은 콘솔(console, 도스창)을 통한 데이터 입력과 콘솔로의 데이터 출력을 의미한다. 자바에서는 표준 입출력(standard I/O)을 위해 3가지 입출력 스트림 System.in, System.out, System.err을 제공하는데, 이 들은 자바 어플리케이션의 실행과 동시에 사용할 수 있게 자동적으로 생성된다.
+
+System.in    콘솔로부터 데이터를 입력받는 데 사용
+System.out 콘솔로 데이터를 출력하는 데 사용
+System.err   콘솔로 데이터를 출력하는 데 사용
+
+Enter키를 누르면 다음 줄의 첫 번째 칼럼으로 커서가 이동하는 이유는?
+Enter키를 누르면 두 개의 특수문자 ‘\r’과 ‘\n’이 입력된 것으로 간주된다. ‘\r’은 캐리지리턴(carriage return), 즉 커서를 현재 라인의 첫 번째 컬럼으로 이동시키고 ‘\n’은 커서를 다음 줄로 이동시키는 줄바꿈(new line)을 한다.
+
+6.2 표준입출력의 대상변경 - setOut(), setErr(), setIn()
+초기에는 System.in, System.out, System.err의 입출력대상이 콘솔화면이지만, setln() , setOut() , setErr()를 사용하면 입출력을 콘솔 이외에 다른 입출력 대상으로 변경하는 것이 가능하다.
+
+static void setOut(PrintStream out)
+System.out의 출력을 지정된 PrintStream으로 변경
+static void setErr(PrintStream err)
+System.err의 출력을 지정된 PrintStream으로 변경
+static void setIn(PrintStream in)
+setln()의 출력을 지정된 PrintStream으로 변경
+
+6.3 RandomAccessFile
+RandomAccessFile은 하나의 클래스로 파일에 대한 입력과 출력을 모두 할 수 있는 스트림이다. 다른 스트림과 달리 Object의 자손이다.
+RandomAccessFile클래스의 가장 큰 장점은 파일의 어느 위치에나 읽기/ 쓰기가 가능하다는 것이다. 이것을 가능하게 하기 위해서 내부적으로 파일 포인터를 사용한다.
+현재 작업 중인 파일에서 파일 포인터의 위치를 알고 싶으면 getFilePointer()를 사용 하면 되고, 파일 포인터의 위치를 옮기기 위해서는 seek (long pos)나 skipBytes(int n)를 사용하면 된다.
+
+6.4 File
+자바에서는 File클래스를 통해서 파일과 디렉토리를 다룰 수 있도록 하고 있다.
+
+File인스턴스를 생성했다고 해서 파일이나 디렉토리가 생성되는 것은 아니다. 새로운 파일을 생성하기 위해서는 File인스턴스를 생성한 다음, 출력스트림을 생성하거나 createNewFile()을 호출해야 한다.
+File f = new File("/Users/…/eclipse-workspace/ch15/예제/FileEx1.java");
+f.createNewFile();	// 새로운 파일이 생성된다.
+
+
+7. 직렬화
+   7.1 직렬화란?
+   직렬화(serialization)란 객체에 저장된 데이터를 스트림에 쓰기(write)위해 연속적인(serial) 데이터로 변환하는 것을 말한다. 반대로 스트림으로부터 데이터를 읽어서 객체를 만드는 것을 역직렬화(deserialization) 라고 한다.
+   객체는오직 인스턴스변수들로만 구성되어 있다.
+   객체를 저장하기 위해서는 객체를 직렬화 해야 한다.
+   객체를 저장한다는 것은 객체의 모든 인스턴스변수의 값을 저장한다는 것이다.
+
+
+7.2 ObjectInputStream과 ObjectOutputStream
+직렬화(스트림에 객체를 출력)에는 ObjectOutputStream을 사용하고 역직렬화(스트림으 로부터 객체를 입력)에는 ObjectinputStream을 사용한다.
+ObjectInputStream과 ObjectOutputStream은 각각 InputStream과 OutputStream을 직접 상속받지만 기반스트림을 필요로 하는 보조스트림이다.
+
+객체를 직렬화하여 입력할 수 있게 해주는 보조스트림
+ObjectInputStream(InputStream in)
+ObjectOutputStream(OutputStream out)
+
+객체를 파일에 저장하는 방법
+FileOutputStream fos = new FileOutputStream(“objectfile.ser”);
+ObjectOutputStream out = new ObjectOutputStream(fos);
+out.writeObject(new Userinfo());
+
+파일에 저장된 객체를 다시 읽어오는 방법
+FileInputStream fis = new FileInputStream(“objectfile.ser”);
+ObjectInputStream in = new ObjectInputStream(fis);
+UserInfo info = (UserInfo)in.readObject();
+
+7.3 직렬화가 가능한 클래스 만들기 - Serializable, transient
+직렬화가 가능한 클래스를 만드는 방법은 직렬화하고자 하는 클래스가 java.io.Serializable 인터페이스를 구현하도록 하면 된다.
+
+Serializable을 구현한 클래스를 상속받는다면 Serializable을 구현하지 않아도 인스턴스 변수와 함께 직렬화가 가능하다. 그러나 조상클래스가 Serializable을 구현하지 않았다면 자손클래스를 직렬화할 때 조상클래스에 정의된 인스턴스변수 name과 password는 직렬화 대상에서 제외된다.
+
+직렬화하고자 하는 객체의 클래스에 직렬화가 안 되는 객체에 대한 참조를 포함하고 있다면, 제어자 transient를 붙여서 직렬화 대상에서 제외되도록 할 수 있다. 또는 password와 같이 보안상 직렬화되면 안 되는 값에 대해서 transient를 사용하면 transient가 붙은 인스턴스변수의 값은 그 타입의 기본값(null)으로 직렬화된다고볼 수 있다.
+
+객체를 역직렬화 할 때는 직렬화할 때의 순서와 일치해야 한다.
+
+7.4 직렬화가 가능한 클래스의 버전 관리
+직렬화된 객체를 역직렬화할 때는 직렬화 했을 때와 같은 클래스를 사용해야 함.
+
+객체가 직렬화될 때 클래스에 정의된 멤버들의 정보를 이용해서 serialVersionUID라는 클래스의 버전을 자동생성해서 직렬화 내용에 포함한다.
+그래서 역직렬화 할 때 클래스의 버전을 비교함으로써 직렬화할 때의 클래스의 버전과 일치하는지 확인할 수 있는 것이다. 그러나 static변수나 상수 또는 transient가 붙은 인스턴스변수가 추가되는 경우에는 직렬화에 영향을 미치지 않기 때문에 클래스의 버전을 다르게 인식하도록 할 필요는 없다.
+
+클래스의 버전을 수동으로 관리하려면 serialVersionUID를 추가로 정의해야 함
+
+serialVersionUID의 값은 정수값이면 어떠한 값으로도 지정할 수 있지만 서로 다른 클래스 간에 같은 값을 갖지 않도록 serialver.exe를 사용해서 생성된 값을 사용하는 것이 보통이다.  serialver.exe 는 클래스에 serialVersionUID가 정의되어 있으면 그 값을 출력하고 정의되어 있지 않으면 자동 생성한 값을 출력한다.
+
+
