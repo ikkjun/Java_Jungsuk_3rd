@@ -25,16 +25,16 @@ InputStream → Reader
 OutputStream → Writer
 
 ## 2. 바이트기반 스트림
-2.1 InputStream과 OutputStream
-2.2 ByteArrayInputStream과 ByteArrayOutputStream
-2.3 FileInputStream과 FileOutputStream
+### 2.1 InputStream과 OutputStream
+### 2.2 ByteArrayInputStream과 ByteArrayOutputStream
+### 2.3 FileInputStream과 FileOutputStream
 
-3. 바이트 기반의 보조스트림
-3.1 FilterInputStream과 FilterOutputStream
-3.2 BufferedInputStream과 BufferedOutputStream
-3.3 DataInputStream과 DataOutputStream
-3.4 SequenceInputStream
-3.5 PrintStream
+## 3. 바이트 기반의 보조스트림
+### 3.1 FilterInputStream과 FilterOutputStream
+### 3.2 BufferedInputStream과 BufferedOutputStream
+### 3.3 DataInputStream과 DataOutputStream
+### 3.4 SequenceInputStream
+### 3.5 PrintStream
 
 4. 문자기반 스트림
    4.1 Reader와 Writer
