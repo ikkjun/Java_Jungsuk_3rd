@@ -17,7 +17,7 @@ Object클래스에 정의된 equals()는 참조변수 값(객체의 주소)을 �
 - 객체의 해시코드(int타입의 정수)를 반환하는 메서드(해시함수)</br>
 - 다량의 데이터를 저장&검색하는 해싱기법에 사용된다.</br>
 - Object클래스의 hashCode()는 객체의 내부주소를 int로 변환해서 반환한다. 
-- equals()를 오버라이딩하면, hashCocle()도 같이 오버라이딩 해야 한다. </br>
+- equals()를 오버라이딩하면, hashCode()도 같이 오버라이딩 해야 한다. </br>
 equals()의 결과가 true인 두 객체의 hash cocle는 같아야하기 때문 
 
 #### toString( )
