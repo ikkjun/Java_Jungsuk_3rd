@@ -31,11 +31,23 @@ InputStream과 OutputStream은 모든 바이트기반의 스트림의 조상이�
 - 그러나 메모리를 사용하는 스트림(ByteArrayInputStream)과 표준 입출력 스트림(System.in, System.out)은 닫아 주지 않아도 된다.
 
 ### 2.2 ByteArrayInputStream과 ByteArrayOutputStream
+ByteArrayInputStream과 ByteArrayOutputStream은 바이트배열에 데이터를 입출력하는데 사용되는 스트림이다. 
+바이트 배열은 사용하는 자원이 메모리 밖에 없으므로 가비지컬렉터에 의해 자동적으로 자원을 반환하므로 close()를 이용해서 스트림을 닫지 않아도 된다.
 
 ### 2.3 FileInputStream과 FileOutputStream
+파일에 데이터를 입출력하는 바이트기반 스트림
 
 ## 3. 바이트 기반의 보조스트림
 ### 3.1 FilterInputStream과 FilterOutputStream
+FilterInputStream과 FilterOutputStream은 InputStream과 OutputStream의 자손이면서 모든 보조스트림의 조상이다. 
+보조스트림은 자체적으로 입출력을 수행할 수 없기 때문에 기반스트림을 필요로 한다.
+FilterInputStream과 FilterOutputStream은 상속을 통해 원하는 작업을 수행하도록 읽고 쓰는 메서드를 오버라이딩 해야 한다.
+
+#### FilterInputStream의 이상한 점? 
+상속과 포함을 동시에 하는 Decorator Pattern을 이용해 클래스를 작성하였다. 
+원래는 포함 관계로도 충분한데 다형성을 위해 부모를 대신할 수 있어야 한다.
+InputStream is = new FilterStream();
+
 ### 3.2 BufferedInputStream과 BufferedOutputStream
 ### 3.3 DataInputStream과 DataOutputStream
 ### 3.4 SequenceInputStream
