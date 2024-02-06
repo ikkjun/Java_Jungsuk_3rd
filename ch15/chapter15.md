@@ -65,82 +65,82 @@ DataInputStream과 DataOutputStream은 데이터를 읽고 쓰는 데 있어서 
 여러 가지 종류의 자료형으로 출력한 경우, 읽을 때는 반드시 쓰인 순서대로 읽어야 한다.
 
 ### 3.4 SequenceInputStream
+여러 개의 입력 스트림을 연속적으로 연결해서 하나의 스트림으로부터 데이터를 읽는 것과 같이 처리할 수 있도록 도와준다.
+
 ### 3.5 PrintStream
+데이터를 다양한 형식의 문자로 출력하는 기능을 제공하는 보조스트림이다.
 
-4. 문자기반 스트림
-   4.1 Reader와 Writer
-   바이트기반 스트림의 조상이 InputStream/OutputStream인 것과 같이 Reader는 문자기반 입력 스트림의 최고 조상이며 Writer는 문자기반 출력 스트림의 최고 조상이다.
+## 4. 문자기반 스트림
+### 4.1 Reader와 Writer
+Reader는 문자기반 입력 스트림의 최고 조상이며,
+Writer는 문자기반 출력 스트림의 최고 조상이다.
 
-문자기반 스트림이라는 것이 단순히 2 byte로 스트림을 처리하는 것만을 의미하지는 않는다. 문자기반 스트림, 즉 Reader와 Writer 그리고 그 자손들은 여러 종류의 인코딩과 자바에서 사용하는 유니코드(UTF-16)간의 변환을 자동적으로 처리해준다. Reader는 특정 인코딩을 읽어서 유니코드로 변환하고 Writer는 유니코드를 특정 인코딩으로 변환하여 저장한다.
+문자기반 스트림, 즉 Reader와 Writer 그리고 그 자손들은 여러 종류의 인코딩과 자바에서 사용하는 유니코드(UTF-16)간의 변환을 자동적으로 처리해준다. 
+Reader는 특정 인코딩을 읽어서 유니코드로 변환하고 Writer는 유니코드를 특정 인코딩으로 변환하여 저장한다.
 
-4.2 FileReader와 FileWriter
+### 4.2 FileReader와 FileWriter
 FileReader와 FileWriter는 파일로부터 텍스트데이터를 읽고, 파일에 쓰는데 사용된다.
 
-4.3 PipedReader와 PipedWriter
-PipedReader와 PipedWriter는 쓰레드 간에 데이터를 주고받을 때 사용된다. 입력과 출력스트림을 하나의 스트림으로 연결(connect)해서 데이터를 주고받는다. 스트림을 생성한 다음에 어느 한쪽 쓰레드에서 connect( )를 호출해서 입력스트림과 출력스트림을 연결한다. 입출력을 마친 후에는 어느 한쪽 스트림만 닫아도 나머지 스트림은 자동으로 닫힌다.
+### 4.3 PipedReader와 PipedWriter
+PipedReader와 PipedWriter는 쓰레드 간에 데이터를 주고받을 때 사용된다. 
+입력과 출력스트림을 하나의 스트림으로 연결(connect)해서 데이터를 주고받는다. 스트림을 생성한 다음에 어느 한쪽 쓰레드에서 connect( )를 호출해서 입력스트림과 출력스트림을 연결한다. 입출력을 마친 후에는 어느 한쪽 스트림만 닫아도 나머지 스트림은 자동으로 닫힌다.
 
-4.4 StringReader와 StringWriter
-StringReader/StringWriter는 CharArrayReader/CharArrayWriter와 같이 입출력 대상이 메모리인 스트림이다. StringWriter에 출력되는 데이터는 내부의 StringBuffer에 저장된다.
+### 4.4 StringReader와 StringWriter
+StringReader/StringWriter는 CharArrayReader/CharArrayWriter와 같이 입출력 대상이 메모리인 스트림이다. 
+StringWriter에 출력되는 데이터는 내부의 StringBuffer에 저장된다.
 
-StringBuffer getBuffer()
-StringWriter에 출력한 데이터가 저장된 StringBuffer를 반환한다.
-String toString()
-StringWriter에 출력된(StringBuffer에 저장된) 문자열을 반환한다.
-
-5. 문자기반의 보조스트림
-   5.1 BufferedReader와 BufferedWriter
-   BufferedReader와 BufferedWriter는 버퍼를 이용해서 입출력의 효율을 높일 수 있도록 해주는 역할을 한다. 라인 단위의 입출력이 편리하다.
-   BufferedReader의 readLine( ) 을 사용하면 데이터를 라인단위로 읽을 수 있고 BufferedWriter는 newLine( )이라는 줄바꿈 해주는 메서드를 가지고 있다.
+## 5. 문자기반의 보조스트림
+### 5.1 BufferedReader와 BufferedWriter
+BufferedReader와 BufferedWriter는 버퍼를 이용해서 입출력의 효율을 높일 수 있도록 해주는 역할을 한다. 
+라인 단위의 입출력이 편리하다.
 
 
-5.2 InputStreamReader와 OutputStreamWriter
-InputStreamReader와 OutputStreamWriter는 바이트 기반 스트림을 문자기반 스트림으로 연결시켜 문자기반 스트림처럼 쓸 수 있게 해준다. 그리고 바이트기반 스트림의 데이터를 지정된 인코딩의 문자데이터로 변환하는 작업을 수행한다.
+### 5.2 InputStreamReader와 OutputStreamWriter
+InputStreamReader와 OutputStreamWriter는 바이트 기반 스트림을 문자기반 스트림으로 연결시켜 문자기반 스트림처럼 쓸 수 있게 해준다. 
+그리고 바이트기반 스트림의 데이터를 지정된 인코딩의 문자데이터로 변환하는 작업을 수행한다.
 
-6. 표준입출력과 File
-   6.1 표준입출력 - System.in, System.out, System.err
-   표준입출력은 콘솔(console, 도스창)을 통한 데이터 입력과 콘솔로의 데이터 출력을 의미한다. 자바에서는 표준 입출력(standard I/O)을 위해 3가지 입출력 스트림 System.in, System.out, System.err을 제공하는데, 이 들은 자바 어플리케이션의 실행과 동시에 사용할 수 있게 자동적으로 생성된다.
+## 6. 표준입출력과 File
+### 6.1 표준입출력 - System.in, System.out, System.err
+표준입출력은 콘솔(console, 도스창)을 통한 데이터 입력과 콘솔로의 데이터 출력을 의미한다. 
+자바에서는 표준 입출력(standard I/O)을 위해 3가지 입출력 스트림 System.in, System.out, System.err을 제공하는데, 
+이 들은 자바 어플리케이션의 실행과 동시에 사용할 수 있게 자동적으로 생성된다.
 
 System.in    콘솔로부터 데이터를 입력받는 데 사용
 System.out 콘솔로 데이터를 출력하는 데 사용
 System.err   콘솔로 데이터를 출력하는 데 사용
 
-Enter키를 누르면 다음 줄의 첫 번째 칼럼으로 커서가 이동하는 이유는?
-Enter키를 누르면 두 개의 특수문자 ‘\r’과 ‘\n’이 입력된 것으로 간주된다. ‘\r’은 캐리지리턴(carriage return), 즉 커서를 현재 라인의 첫 번째 컬럼으로 이동시키고 ‘\n’은 커서를 다음 줄로 이동시키는 줄바꿈(new line)을 한다.
+##### Enter키를 누르면 다음 줄의 첫 번째 칼럼으로 커서가 이동하는 이유는?
+Enter키를 누르면 두 개의 특수문자 ‘\r’과 ‘\n’이 입력된 것으로 간주된다. ‘\r’은 캐리지리턴(carriage return), 
+즉 커서를 현재 라인의 첫 번째 컬럼으로 이동시키고 ‘\n’은 커서를 다음 줄로 이동시키는 줄바꿈(new line)을 한다.
 
-6.2 표준입출력의 대상변경 - setOut(), setErr(), setIn()
+### 6.2 표준입출력의 대상변경 - setOut(), setErr(), setIn()
 초기에는 System.in, System.out, System.err의 입출력대상이 콘솔화면이지만, setln() , setOut() , setErr()를 사용하면 입출력을 콘솔 이외에 다른 입출력 대상으로 변경하는 것이 가능하다.
 
-static void setOut(PrintStream out)
-System.out의 출력을 지정된 PrintStream으로 변경
-static void setErr(PrintStream err)
-System.err의 출력을 지정된 PrintStream으로 변경
-static void setIn(PrintStream in)
-setln()의 출력을 지정된 PrintStream으로 변경
-
-6.3 RandomAccessFile
+### 6.3 RandomAccessFile
 RandomAccessFile은 하나의 클래스로 파일에 대한 입력과 출력을 모두 할 수 있는 스트림이다. 다른 스트림과 달리 Object의 자손이다.
 RandomAccessFile클래스의 가장 큰 장점은 파일의 어느 위치에나 읽기/ 쓰기가 가능하다는 것이다. 이것을 가능하게 하기 위해서 내부적으로 파일 포인터를 사용한다.
 현재 작업 중인 파일에서 파일 포인터의 위치를 알고 싶으면 getFilePointer()를 사용 하면 되고, 파일 포인터의 위치를 옮기기 위해서는 seek (long pos)나 skipBytes(int n)를 사용하면 된다.
 
-6.4 File
-자바에서는 File클래스를 통해서 파일과 디렉토리를 다룰 수 있도록 하고 있다.
+### 6.4 File
+File클래스는 파일과 디렉토리를 다루는데 사용되는 클래스이다.
 
-File인스턴스를 생성했다고 해서 파일이나 디렉토리가 생성되는 것은 아니다. 새로운 파일을 생성하기 위해서는 File인스턴스를 생성한 다음, 출력스트림을 생성하거나 createNewFile()을 호출해야 한다.
+File인스턴스를 생성했다고 해서 파일이나 디렉토리가 생성되는 것은 아니다. 
+새로운 파일을 생성하기 위해서는 File인스턴스를 생성한 다음, 출력스트림을 생성하거나 createNewFile()을 호출해야 한다.
+```java
 File f = new File("/Users/…/eclipse-workspace/ch15/예제/FileEx1.java");
 f.createNewFile();	// 새로운 파일이 생성된다.
+```
 
+## 7. 직렬화
+### 7.1 직렬화란?
+- 직렬화(serialization)란 객체에 저장된 데이터를 스트림에 쓰기(write)위해 연속적인(serial) 데이터로 변환하는 것을 말한다. 반대로 스트림으로부터 데이터를 읽어서 객체를 만드는 것을 역직렬화(deserialization) 라고 한다. 
+- 객체는 오직 인스턴스변수들로만 구성되어 있다. 
+- 객체를 저장하기 위해서는 객체를 직렬화 해야 한다. 
+- 객체를 저장한다는 것은 객체의 모든 인스턴스변수의 값을 저장한다는 것이다.
 
-7. 직렬화
-   7.1 직렬화란?
-   직렬화(serialization)란 객체에 저장된 데이터를 스트림에 쓰기(write)위해 연속적인(serial) 데이터로 변환하는 것을 말한다. 반대로 스트림으로부터 데이터를 읽어서 객체를 만드는 것을 역직렬화(deserialization) 라고 한다.
-   객체는오직 인스턴스변수들로만 구성되어 있다.
-   객체를 저장하기 위해서는 객체를 직렬화 해야 한다.
-   객체를 저장한다는 것은 객체의 모든 인스턴스변수의 값을 저장한다는 것이다.
-
-
-7.2 ObjectInputStream과 ObjectOutputStream
-직렬화(스트림에 객체를 출력)에는 ObjectOutputStream을 사용하고 역직렬화(스트림으 로부터 객체를 입력)에는 ObjectinputStream을 사용한다.
+### 7.2 ObjectInputStream과 ObjectOutputStream
 ObjectInputStream과 ObjectOutputStream은 각각 InputStream과 OutputStream을 직접 상속받지만 기반스트림을 필요로 하는 보조스트림이다.
+직렬화(스트림에 객체를 출력)에는 ObjectOutputStream을 사용하고 역직렬화(스트림으로부터 객체를 입력)에는 ObjectinputStream을 사용한다.
 
 객체를 직렬화하여 입력할 수 있게 해주는 보조스트림
 ObjectInputStream(InputStream in)
