@@ -55,6 +55,11 @@ BufferedInputStream과 BufferedOutputStream은 스틀미의 입출력 효율을 
 #### 특징
 버퍼가 가득차면 그 때 버퍼의 모든 내용을 출력 소스에 출력한다. 버퍼가 가득 찼을 때문 출력소스에 출력을 하기 때문에 마지막 출력부분이 출력 소스에 쓰이지 못하고 BufferedOutputStream의 버퍼에 남아있는 채로 프로그램이 종료될 수 있다.
 그래서 프로그램에서 모든 출력작업을 마친 후 BufferedOutputStream에 close()나 flush()를 호출해서 마지막에 비어있는 모든 내용이 출력 소스에 출력되도록 해야 한다.
+
+보조스트림을 사용한 경우에는 기반 스트림의 close()나 flush()를 호출할 필요 없이 단순히 보조스트림의 close()를 호출하기만 하면 된다.
+#### 단점
+성능은 좋지만 첫 번째로 들어온 데이터는 오래 기다려야 한다.
+
 ### 3.3 DataInputStream과 DataOutputStream
 DataInputStream과 DataOutputStream은 데이터를 읽고 쓰는 데 있어서 byte단위가 아닌, 8가지 기본 자료형의 단위로 읽고 쓸 수 있다는 장점이 있다.</br>
 여러 가지 종류의 자료형으로 출력한 경우, 읽을 때는 반드시 쓰인 순서대로 읽어야 한다.
