@@ -143,23 +143,21 @@ Function<Integer, int[]> f2 = int[]::new;
 
 #### 스트림의 특징
 1. 스트림은 데이터 소스로 부터 데이터를 읽기만할 뿐 데이터 소스를 변경하지 않는다.(원본 유지)
-2. 스트림은 Iterator처럼 일회용이다.</br>
-3. 최종연산 전까지 중간연산이 수행되지 않는다. → 지연된 연산</br>
-4. 스트림은 작업을 내부 반복으로 처리한다.</br>
-5. 스트림의 작업을 병렬로 처리한다. → 병렬스트림</br>
+2. 스트림은 Iterator처럼 일회용이다.(필요하면 다시 스트림을 생성해야 한다.)
+3. 최종연산 전까지 중간연산이 수행되지 않는다. → 지연된 연산
+4. 스트림은 작업을 내부 반복으로 처리한다.
+5. 스트림의 작업을 병렬로 처리한다. → 병렬스트림
 
 #### 스트림의 연산
 스트림이 제공하는 연산은 중간 연산과 최종 연산으로 분류할 수 있는데, 
 중간 연산은 연산 결과가 스트림인 연산이므로 스트림에 연속해서 중간 연산을 할 수 있다. 
 반면에 최종 연산은 연산결과가 스트림이 아닌 연산이며, 스트림의 요소를 소모하면서 연산을 수행하므로 단 한번만 연산이 가능하다.
 
-중간 연산은 map( )과 flatMap( ), 최종 연산은 reduce( )와 collect( )가 핵심이다.
+* 중간 연산은 map( )과 flatMap( ), 최종 연산은 reduce( )와 collect( )가 핵심이다.
 
-Stream〈Integer〉와 lntStream
-요소의 타입이 T인 스트림은 기본적으로 Stream〈T〉이지만, 오토박싱&언박싱으로 인한 비효율을 줄이기 위해 데이터 소스의 요소를 기본형으로 다루는 스트림, IntStream, LongSream, DoubleStream이 제공된다.
-
-병렬 스트림
-스트림으로 데이터를 다룰 때의 장점 중 하나는 병렬 처리가 쉽다는 것이다. 병렬 스트림은 내부적으로 이 프레임웍을 이용해서 자동적으로 연산을 병렬로 수행한다. 스트림에 parallel()이라는 메서드를 호출해서 병렬로 연산을 수행하도록 지시하면 된다. 반대로 병렬로 처리되지 않게 하려면 sequential()을 호출하면 된다. 이 메서드는 parallel()을 호출한 것을 취소할 때만 사용한다.
+#### Stream〈Integer〉와 lntStream
+요소의 타입이 T인 스트림은 기본적으로 Stream〈T〉이지만, 
+오토박싱&언박싱으로 인한 비효율을 줄이기 위해 데이터 소스의 요소를 기본형으로 다루는 스트림, IntStream, LongSream, DoubleStream이 제공된다.
 
 ### 2.2 스트림 만들기
 스트림의 소스가 될 수 있는 대상은 배열, 컬렉션, 임의의 수 등
@@ -257,11 +255,11 @@ Stream<String> strStrStrm = strArrStrm.flatMap(Arrays::stream);
 ### 2.4 Optional<T>와 OptionalInt
 Optional<T>은 지네릭 클래스로 ‘T타입의 객체’를 감싸는 래퍼 클래스(Integer, Long…)이다. 
 Optional타입의 객체에는 모든 타입의 참조변수를 담을 수 있다. 
-Optional을 사용하면 간접적으로 null을 다룰 수 있게 된다(null-safe하게 다룬다.).
+Optional을 사용하면 간접적으로 null을 다룰 수 있게 된다(null-safe하게 다룬다).
 
-#### 간접적으로 null 다루는 이유는?
-null을 직접 다루는 것은 위험하다.(NullPointException발생할 수 있다.)
-null 체크하기 위해 if문이 필수적으로 필요하므로 코드가 지저분해진다.
+#### 간접적으로 null 다루는 이유(Optional<T>가 필요한 이유)는?
+1. null을 직접 다루는 것은 NullPointException이 발생할 수 있기 때문에 위험하다.
+2. null 체크하기 위해 if문이 필수적으로 필요하므로 코드가 지저분해진다.
 
 Optional객체 생성하기
 Optional객체를 생성할 때는 of( ) 또는 ofNullable( )을 사용해야 한다. of( )는 매개변수의 값이 null이면 NullPointerException이 발생하기 때문이다.
@@ -372,7 +370,7 @@ groupingBy( )와 함께 사용할 수 있다.
 
 String studentNames = stuStream.map(Student::getName).collect(joining(“,”));
 
-그룹화와 분할
+#### 그룹화와 분할
 Collectors
 groupingBy()
 스트림을 n분할 한다.
