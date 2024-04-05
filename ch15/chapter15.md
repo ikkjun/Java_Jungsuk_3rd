@@ -142,20 +142,6 @@ f.createNewFile();	// 새로운 파일이 생성된다.
 ObjectInputStream과 ObjectOutputStream은 각각 InputStream과 OutputStream을 직접 상속받지만 기반스트림을 필요로 하는 보조스트림이다.
 직렬화(스트림에 객체를 출력)에는 ObjectOutputStream을 사용하고 역직렬화(스트림으로부터 객체를 입력)에는 ObjectinputStream을 사용한다.
 
-객체를 직렬화하여 입력할 수 있게 해주는 보조스트림
-ObjectInputStream(InputStream in)
-ObjectOutputStream(OutputStream out)
-
-객체를 파일에 저장하는 방법
-FileOutputStream fos = new FileOutputStream(“objectfile.ser”);
-ObjectOutputStream out = new ObjectOutputStream(fos);
-out.writeObject(new Userinfo());
-
-파일에 저장된 객체를 다시 읽어오는 방법
-FileInputStream fis = new FileInputStream(“objectfile.ser”);
-ObjectInputStream in = new ObjectInputStream(fis);
-UserInfo info = (UserInfo)in.readObject();
-
 7.3 직렬화가 가능한 클래스 만들기 - Serializable, transient
 직렬화가 가능한 클래스를 만드는 방법은 직렬화하고자 하는 클래스가 java.io.Serializable 인터페이스를 구현하도록 하면 된다.
 
